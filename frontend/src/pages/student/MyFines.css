@@ -1,0 +1,104 @@
+/* Page */
+.fines-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.fines-header {
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.fines-header h2 {
+  font-size: 28px;
+}
+
+.fines-header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Card */
+.fine-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 30px;
+  max-width: 420px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+  animation: fadeUp 0.6s ease;
+}
+
+/* Info */
+.fine-info {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.fine-info .label {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.fine-info h1 {
+  font-size: 42px;
+  color: #e63946;
+}
+
+/* Button */
+.pay-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #38b000, #70e000);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pay-btn:active {
+  transform: scale(0.98);
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fines-page {
+    padding: 20px;
+  }
+
+  .fines-header h2 {
+    font-size: 24px;
+  }
+
+  .fine-card {
+    padding: 24px;
+  }
+
+  .fine-info h1 {
+    font-size: 36px;
+  }
+}

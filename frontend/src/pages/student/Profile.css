@@ -1,0 +1,72 @@
+.profile-container {
+  padding: 20px;
+}
+
+.profile-card {
+  max-width: 500px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== AVATAR ===== */
+.profile-avatar {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profile-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0fbcf9;
+}
+
+.upload-btn {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #0fbcf9;
+  cursor: pointer;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+/* ===== INFO ===== */
+.profile-info p {
+  margin: 8px 0;
+  color: #444;
+}
+
+.profile-info input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ===== ACTIONS ===== */
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #0fbcf9;
+  color: #000;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.profile-actions button.secondary {
+  background: #ddd;
+}

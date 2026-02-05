@@ -1,0 +1,152 @@
+/* ===== PAGE WRAPPER ===== */
+.mycourses-container {
+  min-height: 100vh;
+  padding: 90px 8%;
+  background: linear-gradient(
+    135deg,
+    #0f0c29,
+    #302b63,
+    #24243e
+  );
+  color: #ffffff;
+}
+
+/* ===== PAGE TITLE ===== */
+.mycourses-container h1 {
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-text {
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* ===== GRID ===== */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+/* ===== COURSE CARD ===== */
+.course-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+  transition: 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.course-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ===== TEXT ===== */
+.course-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ffe082;
+}
+
+.course-card p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* ===== PROGRESS ===== */
+.progress-bar {
+  height: 8px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #667eea,
+    #764ba2
+  );
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+.progress-text {
+  font-size: 13px;
+  opacity: 0.85;
+  display: block;
+  margin-bottom: 22px;
+}
+
+/* ===== BUTTON ===== */
+.open-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    #667eea,
+    #764ba2
+  );
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.open-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== LINKS ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .mycourses-container {
+    padding: 70px 6%;
+  }
+
+  .mycourses-container h1 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mycourses-container h1 {
+    font-size: 28px;
+  }
+
+  .course-card {
+    padding: 22px;
+  }
+}

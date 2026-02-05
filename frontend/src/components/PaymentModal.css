@@ -1,0 +1,69 @@
+.payment-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.payment-modal {
+  width: 400px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.amount {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.payment-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.payment-tabs button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.payment-tabs .active {
+  background: #0fbcf9;
+}
+
+.pay-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.wallet-box p {
+  background: #f5f6fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.payment-actions .cancel {
+  background: #ddd;
+}

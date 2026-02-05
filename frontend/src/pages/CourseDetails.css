@@ -1,0 +1,210 @@
+/* ===== PAGE BACKGROUND ===== */
+.course-page {
+  min-height: 100vh;
+  padding: 90px 8%;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 50px;
+  color: #ffffff;
+}
+
+/* ===== LEFT CONTENT ===== */
+.course-left h1 {
+  font-size: 44px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #ffe082;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.meta {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 35px;
+}
+
+.course-left h3 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* ===== SYLLABUS ===== */
+.syllabus-box {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  transition: 0.35s ease;
+}
+
+.syllabus-box:hover {
+  transform: translateY(-6px);
+}
+
+.syllabus-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.syllabus-header strong {
+  color: #ffffff;
+}
+
+.syllabus-header span {
+  opacity: 0.75;
+}
+
+.syllabus-box ul {
+  list-style: none;
+}
+
+.syllabus-box li {
+  padding: 10px 0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.syllabus-box li:last-child {
+  border-bottom: none;
+}
+
+.preview {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #ffe082;
+  cursor: pointer;
+}
+
+/* ===== RIGHT SIDEBAR ===== */
+.course-right {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+/* ===== PRICE CARD ===== */
+.price-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.price-card img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 18px;
+}
+
+.offer {
+  font-size: 13px;
+  color: #ffb74d;
+  margin-bottom: 10px;
+}
+
+.price-card h2 {
+  font-size: 34px;
+  color: #ffe082;
+}
+
+.old-price {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 14px;
+}
+
+.old-price span {
+  color: #4caf50;
+  margin-left: 6px;
+}
+
+/* ===== COURSE INFO ===== */
+.course-info {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* ===== ENROLL BUTTON ===== */
+.enroll-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.enroll-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== BENEFITS ===== */
+.price-card h4 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.benefits {
+  list-style: none;
+  text-align: left;
+}
+
+.benefits li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+/* ===== LINKS ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  .course-page {
+    grid-template-columns: 1fr;
+  }
+
+  .course-right {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .course-left h1 {
+    font-size: 34px;
+  }
+
+  .course-page {
+    padding: 70px 6%;
+  }
+}
