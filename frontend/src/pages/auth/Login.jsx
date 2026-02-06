@@ -25,12 +25,13 @@ function Login() {
     <div className="login-wrapper">
       <div className="login-card">
         <h2 className="title">LMS Portal</h2>
-        <p className="subtitle">Sign in to continue</p>
+        <p className="subtitle">Sign in to continue learning</p>
 
         <div className="input-group">
           <input
             type="text"
             required
+            value={loginId}
             onChange={(e) => setLoginId(e.target.value)}
           />
           <label>Email or Phone</label>
@@ -40,6 +41,7 @@ function Login() {
           <input
             type="password"
             required
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <label>Password</label>
@@ -51,7 +53,7 @@ function Login() {
 
         <div className="extra-links">
           <span>Forgot Password?</span>
-          <span className="highlight"> Reset</span>
+          <span className="highlight">Reset Here</span>
         </div>
       </div>
     </div>

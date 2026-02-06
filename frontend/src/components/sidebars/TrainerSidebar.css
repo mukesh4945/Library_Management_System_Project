@@ -1,66 +1,179 @@
-.trainer-sidebar {
-  width: 240px;
-  min-height: 100vh;
-  background: #1e272e;
-  color: #fff;
-  padding: 20px;
-}
-
-.trainer-profile {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.trainer-profile img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #0fbcf9;
-}
-
-.trainer-profile h3 {
-  margin: 8px 0 2px;
-}
-
-.trainer-profile span {
-  font-size: 13px;
-  color: #aaa;
-}
-
-.trainer-sidebar nav {
+/* TrainerSidebar.css */
+.trainer-sidebar-premium {
+  width: 260px;
+  height: 100vh;
+  background: #0f172a; /* Deep Navy */
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  position: sticky;
+  top: 0;
+  transition: 0.3s ease;
+  
 }
 
-.trainer-sidebar nav a {
+/* Brand Section */
+.sidebar-brand {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #8b5cf6;
+  letter-spacing: 2px;
+}
+.brand-tag {
+  font-size: 0.65rem;
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Profile Section */
+.trainer-profile-box {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  margin-bottom: 15px;
+}
+
+.profile-img-wrapper {
+  position: relative;
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 12px;
+}
+
+.profile-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1e293b;
+  padding: 3px;
+  background: linear-gradient(45deg, #8b5cf6, #d946ef);
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 14px;
+  height: 14px;
+  background: #23d5ab;
+  border: 3px solid #0f172a;
+  border-radius: 50%;
+}
+
+.trainer-profile-box h3 {
+  font-size: 1.1rem;
+  color: #f8fafc;
+  margin-bottom: 4px;
+}
+
+.trainer-role {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.edit-profile-mini {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-profile-mini:hover {
+  border-color: #8b5cf6;
   color: #fff;
+}
+
+/* Nav Links */
+.sidebar-nav {
+  flex: 1;
+  padding: 0 15px;
+}
+
+.nav-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #475569;
+  font-weight: 800;
+  margin: 20px 10px 10px;
+  letter-spacing: 1.5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #94a3b8;
   text-decoration: none;
-  padding: 10px;
-  border-radius: 6px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  transition: 0.3s;
+  position: relative;
 }
 
-.trainer-sidebar nav a.active,
-.trainer-sidebar nav a:hover {
-  background: #0fbcf9;
-  color: #000;
+.nav-icon {
+  margin-right: 12px;
+  font-size: 1.1rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .trainer-sidebar {
-    width: 100%;
-    min-height: auto;
-    display: flex;
-    justify-content: space-around;
-  }
+.nav-text {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
 
-  .trainer-profile {
-    display: none;
-  }
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+}
 
-  .trainer-sidebar nav {
-    flex-direction: row;
-  }
+/* Active State */
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.15) 0%, transparent 100%);
+  color: #8b5cf6;
+  border-left: 3px solid #8b5cf6;
+}
+
+.count-badge {
+  margin-left: auto;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+/* Footer Section */
+.sidebar-footer {
+  padding: 20px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.logout-btn-premium {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #ef4444;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.logout-btn-premium:hover {
+  background: rgba(239, 68, 68, 0.1);
 }

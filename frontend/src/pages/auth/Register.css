@@ -1,135 +1,170 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+/* Google Fonts Import for modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* --- 1. Animated Background --- */
 .register-wrapper {
-  min-height: 90vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  /* Advanced Animated Gradient */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
 }
 
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- 2. Glassmorphism Card --- */
 .register-card {
-  width: 420px;
+  position: relative;
+  width: 400px;
   padding: 40px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-  animation: slideUp 0.8s ease;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Transparent white */
+  backdrop-filter: blur(15px); /* The "Frosted" blur effect */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  overflow: hidden;
+  animation: slideUp 0.8s ease-out;
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Typography --- */
 .title {
   text-align: center;
-  color: #ffffff;
-  font-size: 28px;
-  margin-bottom: 6px;
+  font-size: 2em;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .subtitle {
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 15px;
-  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 0.9em;
 }
 
+/* --- 3. Floating Label Inputs (Advanced Interaction) --- */
 .input-group {
   position: relative;
-  margin-bottom: 22px;
+  margin-bottom: 30px;
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px 10px;
-  background: transparent;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
   border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   outline: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
-  color: #ffffff;
-  font-size: 15px;
+  background: transparent;
+  transition: border-color 0.3s;
 }
 
 .input-group label {
   position: absolute;
-  left: 10px;
-  top: 12px;
-  color: rgba(255, 255, 255, 0.75);
-  transition: 0.3s;
-  pointer-events: none;
+  top: 10px;
+  left: 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none; /* Allows clicking through the label */
+  transition: 0.3s ease all;
 }
 
-.input-group input:focus ~ label,
-.input-group input:valid ~ label {
-  top: -8px;
+/* Animation trigger: When input is focused OR has valid content */
+.input-group input:focus,
+.input-group input:valid {
+  border-bottom-color: #fff;
+}
+
+/* Move label up */
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -20px;
   font-size: 12px;
-  color: #ffffff;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+/* --- Select Dropdown Styling --- */
+.select-group {
+  margin-bottom: 30px;
+  position: relative;
 }
 
 .select-group select {
   width: 100%;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  border-radius: 8px;
-  color: #ffffff;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff; /* White text for selected item */
+  border-radius: 5px;
   outline: none;
-  margin-bottom: 24px;
+  cursor: pointer;
 }
 
-.select-group option {
-  color: #333;
+/* Select options usually need a dark bg to be readable on windows */
+.select-group select option {
+  background: #333;
+  color: #fff;
 }
 
+/* --- 4. Neon Button Animation --- */
 .register-btn {
   width: 100%;
-  padding: 14px;
-  background: #ffffff;
-  color: #764ba2;
+  padding: 12px;
+  background: #fff;
+  color: #333;
   border: none;
-  border-radius: 10px;
+  border-radius: 25px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
 }
 
 .register-btn:hover {
-  transform: translateY(-2px);
-  background: #f1f1f1;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #fff; /* Glowing effect */
 }
 
+.register-btn:active {
+  transform: scale(0.98);
+}
+
+/* --- Footer Text --- */
 .footer-text {
-  margin-top: 24px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 14px;
+  margin-top: 20px;
+  color: #fff;
+  font-size: 0.9em;
 }
 
 .footer-text a {
-  color: #ffffff;
-  font-weight: bold;
+  color: #ffecd2;
   text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 📱 Mobile Responsive */
-@media (max-width: 480px) {
-  .register-card {
-    width: 92%;
-    padding: 30px;
-  }
+.footer-text a:hover {
+  color: #fff;
+  text-decoration: underline;
 }

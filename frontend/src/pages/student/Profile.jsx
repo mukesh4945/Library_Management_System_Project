@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Profile.css";
 
 const Profile = () => {
-  // 🔹 Load from localStorage or fallback
   const savedUser = JSON.parse(localStorage.getItem("studentProfile"));
 
   const [editMode, setEditMode] = useState(false);
@@ -18,14 +17,12 @@ const Profile = () => {
 
   const [tempUser, setTempUser] = useState(user);
 
-  // 🔹 Save to localStorage
   const handleSave = () => {
     setUser(tempUser);
     localStorage.setItem("studentProfile", JSON.stringify(tempUser));
     setEditMode(false);
   };
 
-  // 🔹 Image upload preview
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -38,78 +35,98 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <h1>👤 My Profile</h1>
+    <div className="profile-wrapper">
+      <div className="profile-header-text">
+        <h1>👤 Account Settings</h1>
+        <p>Manage your personal information and profile visibility.</p>
+      </div>
 
-      <div className="profile-card">
-        {/* ===== AVATAR ===== */}
-        <div className="profile-avatar">
-          <img src={editMode ? tempUser.photo : user.photo} alt="Profile" />
-
-          {editMode && (
-            <label className="upload-btn">
-              Change Photo
-              <input type="file" accept="image/*" onChange={handleImageChange} />
-            </label>
-          )}
+      <div className="profile-card-main">
+        {/* --- Left Side: Avatar Section --- */}
+        <div className="avatar-section">
+          <div className="avatar-glow-ring">
+            <img 
+              src={editMode ? tempUser.photo : user.photo} 
+              alt="Profile" 
+              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=" + user.name; }}
+            />
+            {editMode && (
+              <label className="image-overlay">
+                <span>📷 Change</span>
+                <input type="file" accept="image/*" onChange={handleImageChange} />
+              </label>
+            )}
+          </div>
+          <h2 className="display-name">{user.name}</h2>
+          <span className="role-badge">{user.role}</span>
         </div>
 
-        {/* ===== INFO ===== */}
-        <div className="profile-info">
-          {!editMode ? (
-            <>
-              <p><b>Name:</b> {user.name}</p>
-              <p><b>Email:</b> {user.email}</p>
-              <p><b>Phone:</b> {user.phone}</p>
-              <p><b>Role:</b> {user.role}</p>
-            </>
-          ) : (
-            <>
-              <input
-                type="text"
-                value={tempUser.name}
-                onChange={(e) =>
-                  setTempUser({ ...tempUser, name: e.target.value })
-                }
-              />
+        {/* --- Right Side: Details Form --- */}
+        <div className="details-section">
+          <div className="info-grid">
+            <div className="info-group">
+              <label>Full Name</label>
+              {!editMode ? (
+                <p className="read-only-text">{user.name}</p>
+              ) : (
+                <input
+                  type="text"
+                  value={tempUser.name}
+                  onChange={(e) => setTempUser({ ...tempUser, name: e.target.value })}
+                />
+              )}
+            </div>
 
-              <input
-                type="email"
-                value={tempUser.email}
-                onChange={(e) =>
-                  setTempUser({ ...tempUser, email: e.target.value })
-                }
-              />
+            <div className="info-group">
+              <label>Email Address</label>
+              {!editMode ? (
+                <p className="read-only-text">{user.email}</p>
+              ) : (
+                <input
+                  type="email"
+                  value={tempUser.email}
+                  onChange={(e) => setTempUser({ ...tempUser, email: e.target.value })}
+                />
+              )}
+            </div>
 
-              <input
-                type="text"
-                value={tempUser.phone}
-                onChange={(e) =>
-                  setTempUser({ ...tempUser, phone: e.target.value })
-                }
-              />
-            </>
-          )}
-        </div>
+            <div className="info-group">
+              <label>Phone Number</label>
+              {!editMode ? (
+                <p className="read-only-text">{user.phone}</p>
+              ) : (
+                <input
+                  type="text"
+                  value={tempUser.phone}
+                  onChange={(e) => setTempUser({ ...tempUser, phone: e.target.value })}
+                />
+              )}
+            </div>
 
-        {/* ===== ACTIONS ===== */}
-        <div className="profile-actions">
-          {!editMode ? (
-            <button onClick={() => setEditMode(true)}>Edit Profile</button>
-          ) : (
-            <>
-              <button onClick={handleSave}>Save</button>
-              <button
-                className="secondary"
-                onClick={() => {
+            <div className="info-group">
+              <label>Library ID (Role)</label>
+              <p className="read-only-text permanent">{user.role}</p>
+            </div>
+          </div>
+
+          {/* --- Buttons Section --- */}
+          <div className="form-actions">
+            {!editMode ? (
+              <button className="edit-btn" onClick={() => setEditMode(true)}>
+                ⚙️ Edit Profile
+              </button>
+            ) : (
+              <div className="edit-actions">
+                <button className="save-btn" onClick={handleSave}>Confirm Changes</button>
+                <button className="cancel-btn" onClick={() => {
                   setTempUser(user);
                   setEditMode(false);
-                }}
-              >
-                Cancel
-              </button>
-            </>
-          )}
+                }}>
+                  Cancel
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

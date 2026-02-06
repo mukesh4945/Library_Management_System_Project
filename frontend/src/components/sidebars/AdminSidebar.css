@@ -1,56 +1,169 @@
-.admin-sidebar {
-  width: 240px;
-  background: #0f172a;
-  color: white;
+/* AdminSidebar.css */
+.admin-sidebar-premium {
+  width: 260px;
   height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 20px;
-}
-
-.sidebar-logo {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #38bdf8;
-}
-
-.admin-sidebar nav {
+  background: #0f172a; /* Deep Navy */
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  position: fixed; /* Admin panel fixed rehta hai */
+  left: 0;
+  top: 0;
+  transition: 0.3s ease;
 }
 
-.admin-sidebar a {
+.sidebar-brand {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #3b82f6; /* Admin Blue */
+  letter-spacing: 2px;
+}
+.brand-tag {
+  font-size: 0.65rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.admin-profile-box {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  margin-bottom: 15px;
+}
+
+.profile-img-wrapper {
+  position: relative;
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 12px;
+}
+
+.profile-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1e293b;
+  padding: 3px;
+  background: linear-gradient(45deg, #3b82f6, #2dd4bf);
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 14px;
+  height: 14px;
+  background: #23d5ab;
+  border: 3px solid #0f172a;
+  border-radius: 50%;
+}
+
+.admin-profile-box h3 {
+  font-size: 1.1rem;
+  color: #f8fafc;
+  margin-bottom: 4px;
+}
+
+.admin-role {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.edit-profile-mini {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-profile-mini:hover {
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0 15px;
+  overflow-y: auto;
+}
+
+.nav-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #475569;
+  font-weight: 800;
+  margin: 20px 10px 10px;
+  letter-spacing: 1.5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #94a3b8;
   text-decoration: none;
-  color: #cbd5f5;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: background 0.2s ease;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  transition: 0.3s;
 }
 
-.admin-sidebar a:hover {
-  background: #1e293b;
+.nav-icon {
+  margin-right: 12px;
+  font-size: 1.1rem;
 }
 
-.admin-sidebar a.active {
-  background: #2563eb;
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%);
+  color: #3b82f6;
+  border-left: 3px solid #3b82f6;
+}
+
+.count-badge {
+  margin-left: auto;
+  background: #3b82f6;
   color: white;
+  font-size: 0.6rem;
+  padding: 1px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
 }
 
-/* 📱 Mobile */
-@media (max-width: 768px) {
-  .admin-sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-  }
+.sidebar-footer {
+  padding: 20px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
 
-  .admin-sidebar nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+.logout-btn-premium {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #ef4444;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.logout-btn-premium:hover {
+  background: rgba(239, 68, 68, 0.1);
 }

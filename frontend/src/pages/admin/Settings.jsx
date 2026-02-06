@@ -3,14 +3,16 @@ import "./Settings.css";
 
 function Settings() {
   const [profile, setProfile] = useState({
-    name: "Admin User",
-    email: "admin@gmail.com",
+    name: "Mukesh Admin",
+    email: "admin@lms-pro.com",
     password: "",
+    bio: "Chief System Administrator",
   });
 
   const [system, setSystem] = useState({
-    darkMode: false,
+    darkMode: true,
     notifications: true,
+    twoFactor: false,
   });
 
   const handleProfileChange = (e) => {
@@ -23,91 +25,122 @@ function Settings() {
 
   const handleSave = (e) => {
     e.preventDefault();
-    alert("Settings saved successfully ✅");
+    // Yahan hum ek toast notification trigger kar sakte hain
+    alert("Configurations synchronized successfully! 🚀");
   };
 
   return (
-    <div className="settings-page">
-      {/* Header */}
-      <div className="settings-header">
-        <h1>⚙️ Settings</h1>
-        <p>Manage your profile and system preferences</p>
-      </div>
+    <div className="settings-container-advance">
+      <header className="settings-hero">
+        <div className="hero-text">
+          <h1>⚙️ Control Center</h1>
+          <p>Fine-tune your administrative experience and security protocols.</p>
+        </div>
+      </header>
 
-      <div className="settings-grid">
-        {/* PROFILE SETTINGS */}
-        <form className="settings-card" onSubmit={handleSave}>
-          <h2>👤 Profile Settings</h2>
-
-          <div className="field">
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="name"
-              value={profile.name}
-              onChange={handleProfileChange}
-            />
+      <div className="settings-main-layout">
+        {/* --- LEFT COLUMN: PROFILE --- */}
+        <section className="settings-glass-card profile-section">
+          <div className="card-header">
+            <div className="icon-circle">👤</div>
+            <h2>Administrative Profile</h2>
           </div>
 
-          <div className="field">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={profile.email}
-              onChange={handleProfileChange}
-            />
+          <div className="avatar-upload-area">
+            <div className="avatar-preview">M</div>
+            <button className="change-photo-link">Change Avatar</button>
           </div>
 
-          <div className="field">
-            <label>New Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="••••••••"
-              value={profile.password}
-              onChange={handleProfileChange}
-            />
-          </div>
-
-          <button type="submit" className="save-btn">
-            Save Profile
-          </button>
-        </form>
-
-        {/* SYSTEM SETTINGS */}
-        <div className="settings-card">
-          <h2>🛠 System Settings</h2>
-
-          <div className="toggle-row">
-            <span>Dark Mode</span>
-            <label className="switch">
+          <form className="settings-form" onSubmit={handleSave}>
+            <div className="input-group-advance">
+              <label>Full Identity</label>
               <input
-                type="checkbox"
-                name="darkMode"
-                checked={system.darkMode}
-                onChange={handleSystemChange}
+                type="text"
+                name="name"
+                value={profile.name}
+                onChange={handleProfileChange}
+                placeholder="Enter full name"
               />
-              <span className="slider"></span>
-            </label>
-          </div>
+            </div>
 
-          <div className="toggle-row">
-            <span>Email Notifications</span>
-            <label className="switch">
+            <div className="input-group-advance">
+              <label>Security Email</label>
               <input
-                type="checkbox"
-                name="notifications"
-                checked={system.notifications}
-                onChange={handleSystemChange}
+                type="email"
+                name="email"
+                value={profile.email}
+                onChange={handleProfileChange}
               />
-              <span className="slider"></span>
-            </label>
-          </div>
+            </div>
 
-          <button className="save-btn" onClick={handleSave}>
-            Save System Settings
-          </button>
+            <div className="input-group-advance">
+              <label>Reset Access Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Leave blank to keep current"
+                value={profile.password}
+                onChange={handleProfileChange}
+              />
+            </div>
+
+            <button type="submit" className="prime-save-btn">
+              Update Identity
+            </button>
+          </form>
+        </section>
+
+        {/* --- RIGHT COLUMN: PREFERENCES --- */}
+        <div className="settings-right-col">
+          <section className="settings-glass-card">
+            <div className="card-header">
+              <div className="icon-circle">🛠</div>
+              <h2>Preferences</h2>
+            </div>
+
+            <div className="preference-list">
+              <div className="toggle-wrapper">
+                <div className="toggle-info">
+                  <span className="toggle-label">Stealth Mode (Dark)</span>
+                  <span className="toggle-desc">Optimize for low-light environments.</span>
+                </div>
+                <label className="ios-switch">
+                  <input
+                    type="checkbox"
+                    name="darkMode"
+                    checked={system.darkMode}
+                    onChange={handleSystemChange}
+                  />
+                  <span className="ios-slider"></span>
+                </label>
+              </div>
+
+              <div className="toggle-wrapper">
+                <div className="toggle-info">
+                  <span className="toggle-label">Push Alerts</span>
+                  <span className="toggle-desc">Receive real-time system logs.</span>
+                </div>
+                <label className="ios-switch">
+                  <input
+                    type="checkbox"
+                    name="notifications"
+                    checked={system.notifications}
+                    onChange={handleSystemChange}
+                  />
+                  <span className="ios-slider"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section className="settings-glass-card security-highlight">
+            <div className="card-header">
+              <div className="icon-circle">🛡</div>
+              <h2>System Integrity</h2>
+            </div>
+            <p className="security-note">Two-factor authentication is currently <strong>Active</strong>.</p>
+            <button className="outline-btn">Audit Security Logs</button>
+          </section>
         </div>
       </div>
     </div>

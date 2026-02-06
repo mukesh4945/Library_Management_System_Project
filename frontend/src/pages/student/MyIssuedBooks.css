@@ -1,102 +1,124 @@
-/* Page */
-.issued-page {
+/* MyIssuedBooks.css - Final High Contrast Fix */
+
+.issued-container {
+  padding: 40px;
+  /* Agar piche white background hai toh ye line use dark kar degi */
+  background: #0f172a; 
   min-height: 100vh;
-  padding: 30px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
 }
 
-/* Header */
-.issued-header {
-  color: #fff;
-  margin-bottom: 25px;
+/* --- Stats Cards (Ab ye gayab nahi honge) --- */
+.dashboard-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
 }
 
-.issued-header h2 {
-  font-size: 28px;
-}
-
-.issued-header p {
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-/* Card */
-.table-card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  animation: fadeUp 0.6s ease;
-}
-
-/* Scroll */
-.table-wrapper {
-  overflow-x: auto;
-}
-
-/* Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 640px;
-}
-
-thead {
-  background: #f5f7ff;
-}
-
-th,
-td {
-  padding: 14px 16px;
-  font-size: 14px;
-  text-align: left;
-}
-
-th {
-  color: #555;
-  font-weight: 600;
-}
-
-tbody tr {
-  transition: background 0.3s ease;
-}
-
-tbody tr:hover {
-  background: #f9faff;
-}
-
-/* Status */
-.status {
-  padding: 6px 14px;
+.glass-stat {
+  flex: 1;
+  background: #1e293b; /* Solid Dark Grey/Blue */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-.status.issued {
-  background: #e7f1ff;
-  color: #1d4ed8;
+.stat-info p { 
+  margin: 0; 
+  font-size: 1rem; 
+  color: #cbd5e1; /* Light Grey text */
+  font-weight: 500;
 }
 
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.stat-info h3 { 
+  margin: 5px 0 0; 
+  font-size: 2.2rem; 
+  color: #23d5ab; /* Bright Green */
+  text-shadow: 0 0 10px rgba(35, 213, 171, 0.3);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .issued-page {
-    padding: 20px;
-  }
+/* --- Table Section (Main Problem Area) --- */
+.glass-table-card {
+  background: #1e293b; /* Dark background taaki white text dikhe */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
 
-  .issued-header h2 {
-    font-size: 24px;
-  }
+.custom-table { width: 100%; border-collapse: collapse; }
+
+/* Table Header */
+.custom-table th { 
+  padding: 20px; 
+  background: #0f172a; /* Darker header */
+  color: #23d5ab; 
+  text-align: left;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border-bottom: 2px solid rgba(35, 213, 171, 0.3);
+}
+
+/* Table Rows */
+.custom-table td { 
+  padding: 20px; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #f8fafc; /* Near white color */
+}
+
+/* Book Title & Author (Blue issue fix) */
+.book-cell { display: flex; flex-direction: column; gap: 4px; }
+
+.b-title { 
+  font-weight: 700; 
+  font-size: 1.1rem; 
+  color: #ffffff !important; /* Force white */
+}
+
+.b-author { 
+  font-size: 0.9rem; 
+  color: #38bdf8 !important; /* Sky Blue - high contrast */
+  font-weight: 500;
+}
+
+/* Search Bar Fix */
+.search-wrapper input {
+  padding: 12px 25px;
+  width: 300px;
+  border-radius: 30px;
+  border: 2px solid #334155;
+  background: #1e293b;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.search-wrapper input:focus {
+  border-color: #23d5ab;
+  outline: none;
+}
+
+/* Status Badges (Full Color for better visibility) */
+.badge { 
+  padding: 6px 16px; 
+  border-radius: 50px; 
+  font-size: 0.8rem; 
+  font-weight: 800;
+}
+.badge.issued { background: #059669; color: #fff; } /* Dark Green */
+.badge.overdue { background: #dc2626; color: #fff; } /* Dark Red */
+
+/* Action Buttons */
+.renew-btn {
+  background: #23d5ab;
+  color: #0f172a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
 }

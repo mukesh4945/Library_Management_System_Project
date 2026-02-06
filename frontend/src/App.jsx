@@ -36,6 +36,11 @@ import TrainerDashboard from "./pages/trainer/TrainerDashboard";
 import IssueBook from "./pages/trainer/IssueBook";
 import ReturnBook from "./pages/trainer/ReturnBook";
 import Reservations from "./pages/trainer/Reservations";
+import EditTrainerProfile from "./pages/trainer/EditTrainerProfile";
+import Setting from "./pages/trainer/Settings";
+import AssessmentManager from "./pages/trainer/AssessmentManager";
+import Submissions from "./pages/trainer/Submissions";
+
 
 function App() {
   return (
@@ -57,6 +62,7 @@ function App() {
 
 
         {/* ===== ADMIN ===== */}
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/users" element={<ManageUsers />} />
         <Route path="/admin/books" element={<ManageBooks />} />
@@ -82,6 +88,10 @@ function App() {
           <Route path="issue" element={<IssueBook />} />
           <Route path="return" element={<ReturnBook />} />
           <Route path="reservations" element={<Reservations />} />
+           <Route path="edit-profile" element={<EditTrainerProfile />} />
+           <Route path="assessments" element={<AssessmentManager />} />
+           <Route path="submissions" element={<Submissions />} />
+           <Route path="settings" element={<Setting />} />
         </Route>
       </Routes>
     </BrowserRouter>

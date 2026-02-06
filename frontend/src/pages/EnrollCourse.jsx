@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PaymentModal from "../components/PaymentModal";
 import "./EnrollCourse.css";
 
@@ -31,16 +31,6 @@ const EnrollCourse = () => {
   const [agree, setAgree] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [alreadyEnrolled, setAlreadyEnrolled] = useState(false);
-
-  /* ================= CHECK ENROLLED ================= */
-  useEffect(() => {
-    const enrolled =
-      JSON.parse(localStorage.getItem("enrolledCourses")) || [];
-    if (enrolled.find((c) => c.id === course.id)) {
-      setAlreadyEnrolled(true);
-    }
-  }, [course.id]);
 
   /* ================= VALIDATION ================= */
   const handlePayClick = () => {
@@ -56,19 +46,6 @@ const EnrollCourse = () => {
 
     setShowPayment(true);
   };
-
-  /* ================= ALREADY ENROLLED ================= */
-  if (alreadyEnrolled) {
-    return (
-      <div className="enroll-container">
-        <h2>✅ Already Enrolled</h2>
-        <p>You have already enrolled in this course.</p>
-        <button onClick={() => navigate("/student/my-courses")}>
-          Go to My Courses
-        </button>
-      </div>
-    );
-  }
 
   return (
     <div className="enroll-container">
@@ -162,21 +139,28 @@ const EnrollCourse = () => {
 
             const enrolled =
               JSON.parse(localStorage.getItem("enrolledCourses")) || [];
-            enrolled.push({
-              ...course,
-              progress: 0,
-              student: form
-            });
 
-            localStorage.setItem(
-              "enrolledCourses",
-              JSON.stringify(enrolled)
+            // 🔥 DUPLICATE CHECK
+            const alreadyExists = enrolled.some(
+              (c) => c.id === course.id
             );
 
-            setTimeout(
-              () => navigate("/student/my-courses"),
-              1500
-            );
+            if (!alreadyExists) {
+              enrolled.push({
+                ...course,
+                progress: 0,
+                student: form
+              });
+
+              localStorage.setItem(
+                "enrolledCourses",
+                JSON.stringify(enrolled)
+              );
+            }
+
+            setTimeout(() => {
+              navigate("/student/my-courses");
+            }, 1500);
           }}
         />
       )}

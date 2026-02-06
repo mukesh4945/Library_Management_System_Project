@@ -3,41 +3,60 @@ import "./MyReservations.css";
 const MyReservations = () => {
   const reservations = [
     {
-      id: 1,
+      id: "RES-9901",
       book: "React in Action",
+      author: "Mark Tielens Thomas",
       date: "05 Jan 2026",
       status: "Pending"
     },
     {
-      id: 2,
+      id: "RES-8842",
       book: "Clean Code",
+      author: "Robert C. Martin",
       date: "02 Jan 2026",
       status: "Approved"
+    },
+    {
+      id: "RES-7721",
+      book: "The Pragmatic Programmer",
+      author: "Andrew Hunt",
+      date: "28 Dec 2025",
+      status: "Expired"
     }
   ];
 
   return (
-    <div className="my-reservations-page">
+    <div className="reservations-container">
       <div className="reservations-header">
-        <h2>📌 My Reservations</h2>
-        <p>Track your book reservation requests</p>
+        <div className="header-text">
+          <h1>📌 My Reservations</h1>
+          <p>You have {reservations.length} active requests</p>
+        </div>
       </div>
 
       <div className="reservation-grid">
-        {reservations.map((res) => (
-          <div key={res.id} className="reservation-card">
+        {reservations.map((res, index) => (
+          <div key={res.id} className="reservation-card" style={{ "--i": index }}>
             <div className="card-top">
-              <h3>{res.book}</h3>
-              <span
-                className={`status ${res.status.toLowerCase()}`}
-              >
+              <span className="res-id">{res.id}</span>
+              <span className={`status-badge ${res.status.toLowerCase()}`}>
                 {res.status}
               </span>
             </div>
 
-            <p className="date">
-              Requested on <strong>{res.date}</strong>
-            </p>
+            <div className="card-body">
+              <h3 className="book-title">{res.book}</h3>
+              <p className="book-author">by {res.author}</p>
+            </div>
+
+            <div className="card-footer">
+              <p className="request-date">
+                Requested: <span>{res.date}</span>
+              </p>
+              {res.status === "Pending" && (
+                <button className="cancel-btn">Cancel</button>
+              )}
+            </div>
           </div>
         ))}
       </div>

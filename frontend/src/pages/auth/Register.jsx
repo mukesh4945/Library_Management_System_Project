@@ -34,18 +34,38 @@ function Register() {
         <h2 className="title">Create Account</h2>
         <p className="subtitle">Join LMS and start learning today</p>
 
+        {/* Input pehle, Label baad mein (CSS Animation ke liye zaroori hai) */}
+        
         <div className="input-group">
-          <input type="text" name="name" required onChange={handleChange} />
+          <input 
+            type="text" 
+            name="name" 
+            required 
+            value={formData.name}
+            onChange={handleChange} 
+          />
           <label>Full Name</label>
         </div>
 
         <div className="input-group">
-          <input type="email" name="email" required onChange={handleChange} />
+          <input 
+            type="email" 
+            name="email" 
+            required 
+            value={formData.email}
+            onChange={handleChange} 
+          />
           <label>Email Address</label>
         </div>
 
         <div className="input-group">
-          <input type="text" name="phone" required onChange={handleChange} />
+          <input 
+            type="text" 
+            name="phone" 
+            required 
+            value={formData.phone}
+            onChange={handleChange} 
+          />
           <label>Phone Number</label>
         </div>
 
@@ -54,13 +74,14 @@ function Register() {
             type="password"
             name="password"
             required
+            value={formData.password}
             onChange={handleChange}
           />
           <label>Password</label>
         </div>
 
         <div className="select-group">
-          <select name="role" onChange={handleChange}>
+          <select name="role" value={formData.role} onChange={handleChange}>
             <option value="student">Student</option>
             <option value="admin">Admin</option>
             <option value="trainer">Trainer</option>

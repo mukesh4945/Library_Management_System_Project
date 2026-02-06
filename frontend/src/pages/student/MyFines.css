@@ -1,104 +1,125 @@
-/* Page */
-.fines-page {
+/* MyFines.css - High Contrast Version */
+
+.fines-container {
+  padding: 40px;
+  background: #0f172a; /* Deep dark slate */
   min-height: 100vh;
-  padding: 30px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  display: flex;
-  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
 }
 
-/* Header */
-.fines-header {
-  color: #fff;
-  margin-bottom: 30px;
+.fines-header-section {
+  margin-bottom: 40px;
+  border-left: 5px solid #ff4d4d; /* Red accent for fines */
+  padding-left: 20px;
 }
 
-.fines-header h2 {
-  font-size: 28px;
+.fines-header-section h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
-.fines-header p {
-  font-size: 14px;
-  opacity: 0.9;
+.fines-header-section p {
+  color: #94a3b8;
+  font-size: 1.1rem;
 }
 
-/* Card */
-.fine-card {
-  background: #fff;
-  border-radius: 22px;
-  padding: 30px;
-  max-width: 420px;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
-  animation: fadeUp 0.6s ease;
+/* --- Layout Structure --- */
+.fines-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 30px;
 }
 
-/* Info */
-.fine-info {
+/* --- Total Fine Card (Hero) --- */
+.total-fine-card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  border-radius: 25px;
+  padding: 40px;
   text-align: center;
-  margin-bottom: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
-.fine-info .label {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 8px;
+.fine-glow-circle {
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 77, 77, 0.1);
+  border: 4px solid #ff4d4d;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
 }
 
-.fine-info h1 {
-  font-size: 42px;
-  color: #e63946;
-}
+.fine-glow-circle .amount { font-size: 3rem; font-weight: 800; color: #fff; }
+.fine-glow-circle .currency { font-size: 1.5rem; margin-right: 5px; color: #ff4d4d; }
 
-/* Button */
-.pay-btn {
+.fine-label { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 30px; }
+
+.pay-now-btn {
   width: 100%;
-  padding: 14px;
-  border-radius: 14px;
+  padding: 15px;
+  background: #23d5ab; /* Green for Action */
+  color: #0f172a;
   border: none;
-  background: linear-gradient(135deg, #38b000, #70e000);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.pay-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+.pay-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(35, 213, 171, 0.4);
 }
 
-.pay-btn:active {
-  transform: scale(0.98);
+.secure-text { font-size: 0.8rem; color: #64748b; margin-top: 15px; }
+
+/* --- Fine History Section --- */
+.fine-history-card {
+  background: #1e293b;
+  border-radius: 25px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fine-history-card h3 { margin-bottom: 25px; font-size: 1.5rem; color: #38bdf8; }
+
+.history-list { display: flex; flex-direction: column; gap: 15px; }
+
+.history-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 15px 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid #ff4d4d;
 }
+
+.item-book { display: block; font-size: 1.1rem; font-weight: 600; color: #fff; }
+.item-reason { font-size: 0.85rem; color: #94a3b8; }
+
+.item-amount-status { text-align: right; }
+.item-price { display: block; font-size: 1.2rem; font-weight: 700; color: #ffffff; }
+
+.status-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.status-tag.unpaid { background: rgba(255, 77, 77, 0.15); color: #ff4d4d; }
+.status-tag.paid { background: rgba(35, 213, 171, 0.15); color: #23d5ab; }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .fines-page {
-    padding: 20px;
-  }
-
-  .fines-header h2 {
-    font-size: 24px;
-  }
-
-  .fine-card {
-    padding: 24px;
-  }
-
-  .fine-info h1 {
-    font-size: 36px;
-  }
+@media (max-width: 900px) {
+  .fines-layout { grid-template-columns: 1fr; }
 }

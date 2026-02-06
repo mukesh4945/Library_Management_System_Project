@@ -1,186 +1,155 @@
-/* Page */
-.manage-users-page {
+/* ManageUsers.css */
+
+.admin-page-container {
   padding: 30px;
-  animation: fadeUp 0.5s ease;
-}
-
-/* Header */
-.users-header {
-  margin-bottom: 25px;
-}
-
-.users-header h1 {
-  font-size: 28px;
-  color: #1e293b;
-}
-
-.users-header p {
-  font-size: 14px;
-  color: #64748b;
-}
-
-/* Search */
-.users-search {
-  margin-bottom: 20px;
-}
-
-.users-search input {
-  width: 100%;
-  max-width: 360px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  font-size: 14px;
-  outline: none;
-}
-
-.users-search input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-}
-
-/* Table Card */
-.table-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Table */
-.users-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.users-table th,
-.users-table td {
-  padding: 14px 16px;
-  font-size: 14px;
-  text-align: left;
-}
-
-.users-table th {
-  background: #f8fafc;
-  color: #475569;
-  font-weight: 600;
-}
-
-.users-table tr {
-  transition: background 0.3s ease;
-}
-
-.users-table tr:hover {
-  background: #f1f5f9;
-}
-
-/* Role Badges */
-.role {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.role.student {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-
-.role.trainer {
-  background: #ecfeff;
-  color: #0e7490;
-}
-
-.role.admin {
-  background: #ede9fe;
-  color: #5b21b6;
-}
-
-/* Status */
-.status {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.status.active {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.status.blocked {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-/* Action */
-.action-btn {
-  background: #0f172a;
+  background: #020617; /* Matches Admin Sidebar */
+  min-height: 100vh;
   color: #fff;
-  border: none;
-  padding: 8px 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 20px;
+}
+
+.header-left h1 { font-size: 2rem; margin-bottom: 5px; color: #f8fafc; }
+.header-left p { color: #64748b; font-size: 0.95rem; }
+
+.header-stats { display: flex; gap: 15px; }
+.mini-stat {
+  background: #1e293b;
+  padding: 8px 15px;
   border-radius: 10px;
-  font-size: 13px;
-  cursor: pointer;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Control Bar */
+.admin-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.search-wrapper-premium {
+  position: relative;
+  flex: 1;
+}
+
+.search-wrapper-premium input {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 12px 15px 12px 45px;
+  border-radius: 12px;
+  color: #fff;
   transition: 0.3s;
 }
 
-.action-btn:hover {
+.search-wrapper-premium input:focus {
+  border-color: #8b5cf6;
+  outline: none;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+.add-user-btn {
+  background: #8b5cf6;
+  color: white;
+  padding: 0 25px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Table Design */
+.glass-table-container {
+  background: #0f172a;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+
+.premium-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.premium-table th {
+  background: #1e293b;
+  padding: 18px 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+}
+
+.premium-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 0.95rem;
+}
+
+.user-profile-cell { display: flex; align-items: center; gap: 12px; }
+.user-initials {
+  width: 40px; height: 40px;
   background: #334155;
+  border-radius: 10px;
+  display: flex; justify-content: center; align-items: center;
+  font-weight: 700; color: #8b5cf6;
 }
 
-.dash {
-  color: #94a3b8;
+.user-name { display: block; font-weight: 600; color: #f8fafc; }
+.user-email { font-size: 0.8rem; color: #64748b; }
+
+/* Status & Roles */
+.role-pill {
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(255,255,255,0.05);
+}
+.role-pill.admin { color: #d946ef; border: 1px solid #d946ef33; }
+.role-pill.trainer { color: #38bdf8; border: 1px solid #38bdf833; }
+.role-pill.student { color: #23d5ab; border: 1px solid #23d5ab33; }
+
+.status-indicator { font-size: 0.85rem; font-weight: 600; }
+.status-indicator.active { color: #23d5ab; }
+.status-indicator.blocked { color: #ef4444; }
+
+/* Buttons */
+.action-toggle-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* No Data */
-.no-data {
-  text-align: center;
-  padding: 20px;
-  color: #94a3b8;
-}
+.btn-block { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.btn-block:hover { background: #ef4444; color: white; }
 
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.btn-unblock { background: rgba(35, 213, 171, 0.1); color: #23d5ab; }
+.btn-unblock:hover { background: #23d5ab; color: #020617; }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .manage-users-page {
-    padding: 20px;
-  }
+.protected-tag { color: #475569; font-style: italic; font-size: 0.85rem; }
 
-  .users-table thead {
-    display: none;
-  }
-
-  .users-table tr {
-    display: block;
-    margin-bottom: 15px;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 10px;
-  }
-
-  .users-table td {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 10px;
-  }
-
-  .users-table td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: #475569;
-  }
-}
+.row-muted { opacity: 0.6; background: rgba(0,0,0,0.2); }

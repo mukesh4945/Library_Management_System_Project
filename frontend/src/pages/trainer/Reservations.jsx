@@ -8,14 +8,16 @@ const Reservations = () => {
       studentId: "ST101",
       studentName: "Rahul Sharma",
       bookName: "Clean Code",
-      status: "Pending"
+      status: "Pending",
+      requestDate: "2026-02-05"
     },
     {
       id: 2,
       studentId: "ST102",
       studentName: "Anjali Verma",
       bookName: "React in Action",
-      status: "Approved"
+      status: "Approved",
+      requestDate: "2026-02-06"
     }
   ]);
 
@@ -28,64 +30,84 @@ const Reservations = () => {
   };
 
   return (
-    <div className="reservations-page">
-      <div className="reservations-header">
-        <h2>📌 Book Reservations</h2>
-        <p>Approve or reject book reservation requests</p>
+    <div className="res-page-container">
+      {/* --- Advanced Header --- */}
+      <div className="res-header">
+        <div className="title-box">
+          <h1>📌 Reservation Queue</h1>
+          <p>Review and manage student book-hold requests.</p>
+        </div>
+        <div className="res-stats-summary">
+          <div className="mini-stat">
+            <span className="count-label">Waiting</span>
+            <span className="count-val">{reservations.filter(r => r.status === "Pending").length}</span>
+          </div>
+        </div>
       </div>
 
-      <div className="table-card">
-        <div className="table-wrapper">
-          <table>
+      {/* --- Table Card --- */}
+      <div className="res-glass-table-card">
+        <div className="table-header-row">
+          <h3>Request History</h3>
+          <div className="table-actions">
+            <button className="filter-btn">All Requests</button>
+          </div>
+        </div>
+
+        <div className="res-table-wrapper">
+          <table className="modern-res-table">
             <thead>
               <tr>
-                <th>Student</th>
-                <th>Book</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>Student Identity</th>
+                <th>Requested Asset</th>
+                <th>Request Date</th>
+                <th>Priority Status</th>
+                <th>Control Actions</th>
               </tr>
             </thead>
-
             <tbody>
               {reservations.map((res) => (
-                <tr key={res.id}>
+                <tr key={res.id} className={`res-row ${res.status.toLowerCase()}`}>
                   <td>
-                    <strong>{res.studentName}</strong>
-                    <span className="sub">{res.studentId}</span>
+                    <div className="res-student-info">
+                      <div className="initial-circle">{res.studentName.charAt(0)}</div>
+                      <div className="text">
+                        <strong>{res.studentName}</strong>
+                        <span>{res.studentId}</span>
+                      </div>
+                    </div>
                   </td>
-
-                  <td>{res.bookName}</td>
-
                   <td>
-                    <span
-                      className={`status ${res.status.toLowerCase()}`}
-                    >
+                    <div className="res-book-info">
+                      <span className="book-tag">📕</span>
+                      <span>{res.bookName}</span>
+                    </div>
+                  </td>
+                  <td className="date-cell">{res.requestDate}</td>
+                  <td>
+                    <div className={`res-status-pill ${res.status.toLowerCase()}`}>
+                      <span className="dot"></span>
                       {res.status}
-                    </span>
+                    </div>
                   </td>
-
-                  <td className="action-buttons">
+                  <td className="res-actions">
                     {res.status === "Pending" ? (
-                      <>
-                        <button
-                          className="approve"
-                          onClick={() =>
-                            updateStatus(res.id, "Approved")
-                          }
+                      <div className="btn-group">
+                        <button 
+                          className="action-btn-approve" 
+                          onClick={() => updateStatus(res.id, "Approved")}
                         >
-                          Approve
+                          ✔ Confirm
                         </button>
-                        <button
-                          className="reject"
-                          onClick={() =>
-                            updateStatus(res.id, "Rejected")
-                          }
+                        <button 
+                          className="action-btn-reject" 
+                          onClick={() => updateStatus(res.id, "Rejected")}
                         >
-                          Reject
+                          ✖ Dismiss
                         </button>
-                      </>
+                      </div>
                     ) : (
-                      <span className="dash">—</span>
+                      <span className="locked-action">Finalized</span>
                     )}
                   </td>
                 </tr>
