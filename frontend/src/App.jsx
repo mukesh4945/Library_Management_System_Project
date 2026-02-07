@@ -19,6 +19,9 @@ import ManageUsers from "./pages/admin/ManageUsers";
 import ManageBooks from "./pages/admin/ManageBooks";
 import Reports from "./pages/admin/Reports";
 import Settings from "./pages/admin/Settings";
+import InvoiceGenerator from './pages/admin/InvoiceGenerator';
+import FeeManagement from './pages/admin/FeeManagement';
+import RefundManagement from './pages/admin/RefundManagement';
 
 /* ===== STUDENT ===== */
 import StudentLayout from "./layouts/StudentLayout";
@@ -43,6 +46,7 @@ import Setting from "./pages/trainer/Settings";
 import AssessmentManager from "./pages/trainer/AssessmentManager";
 import Submissions from "./pages/trainer/Submissions";
 import MarkingInterface from "./pages/trainer/MarkingInterface";
+import AddResource from './pages/trainer/AddResource';
 
 
 function App() {
@@ -71,6 +75,9 @@ function App() {
         <Route path="/admin/books" element={<ManageBooks />} />
         <Route path="/admin/reports" element={<Reports />} />
         <Route path="/admin/settings" element={<Settings />} />
+        <Route path="/admin/invoices" element={<InvoiceGenerator />} />
+        <Route path="/admin/fee-management" element={<FeeManagement />} />
+        <Route path="/admin/refunds" element={<RefundManagement />} />
 
         {/* ===== STUDENT ===== */}
         <Route path="/student" element={<StudentLayout />}>
@@ -82,8 +89,8 @@ function App() {
           <Route path="fines" element={<MyFines />} />
           <Route path="my-courses" element={<MyCourses />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="/student/grades" element={<StudentGrades />} />
-          <Route path="/student/submit-task" element={<SubmitTask />} />
+          <Route path="grades" element={<StudentGrades />} />
+          <Route path="submit-task" element={<SubmitTask />} />
         </Route>
 
         {/* ===== TRAINER ===== */}
@@ -97,7 +104,8 @@ function App() {
            <Route path="assessments" element={<AssessmentManager />} />
            <Route path="submissions" element={<Submissions />} />
            <Route path="settings" element={<Setting />} />
-           <Route path="/trainer/grade/:id" element={<MarkingInterface />} />
+           <Route path="grade/:id" element={<MarkingInterface />} />
+           <Route path="add-resource" element={<AddResource />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,203 @@
+/* --- Global Container --- */
+.fee-mgmt-wrapper {
+  padding: 40px;
+  background: #020617; /* Deep Midnight Blue */
+  min-height: 100vh;
+  color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Header Section --- */
+.fee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.fee-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #818cf8 0%, #2dd4bf 100%);
+
+  background-clip: text;          /* standard */
+  -webkit-background-clip: text;  /* chrome / safari */
+
+  color: transparent;
+}
+
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+/* --- Search Bar Advance --- */
+.search-bar-mini {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar-mini:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
+}
+
+.search-bar-mini input {
+  background: transparent;
+  border: none;
+  padding: 12px;
+  color: white;
+  width: 240px;
+  outline: none;
+}
+
+/* --- Stats Cards --- */
+.fee-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.stat-box {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.4s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-8px);
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.stat-box .icon {
+  width: 50px;
+  height: 50px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.collected .icon { color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+.pending .icon { color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.2); }
+
+.stat-box h3 {
+  font-size: 2.2rem;
+  margin-top: 5px;
+  font-weight: 700;
+}
+
+/* --- Glassmorphic Table --- */
+.fee-table-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.fee-master-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fee-master-table th {
+  background: rgba(255, 255, 255, 0.02);
+  text-align: left;
+  padding: 20px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fee-master-table td {
+  padding: 22px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: middle;
+}
+
+.fee-master-table tr:hover {
+  background: rgba(99, 102, 241, 0.03);
+}
+
+/* --- Badge & UI Elements --- */
+.id-badge {
+  background: #1e293b;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: monospace;
+  color: #818cf8;
+  font-weight: 600;
+}
+
+.paid-col { color: #10b981; font-weight: 700; font-size: 1.1rem; }
+.due-col { color: #f43f5e; font-weight: 700; font-size: 1.1rem; }
+
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.status-pill.paid { background: rgba(16, 185, 129, 0.15); color: #34d399; box-shadow: 0 0 10px rgba(52, 211, 153, 0.1); }
+.status-pill.partial { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.status-pill.overdue { background: rgba(244, 63, 94, 0.15); color: #fb7185; }
+
+/* --- Action Buttons --- */
+.update-fee-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.update-fee-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+.refund-master-btn {
+  background: rgba(244, 63, 94, 0.1);
+  color: #f43f5e;
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.refund-master-btn:hover {
+  background: #f43f5e;
+  color: white;
+}

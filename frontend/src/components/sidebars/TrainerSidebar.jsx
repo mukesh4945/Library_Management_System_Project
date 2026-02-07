@@ -76,6 +76,8 @@ const TrainerSidebar = () => {
           <span className="nav-text">Settings</span>
         </NavLink>
       </nav>
+      
+      <NavLink to="add-resource">➕ Add New Item</NavLink>
 
       {/* --- Bottom Section --- */}
       <div className="sidebar-footer">
