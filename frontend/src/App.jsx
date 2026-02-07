@@ -29,6 +29,8 @@ import MyReservations from "./pages/student/MyReservations";
 import MyFines from "./pages/student/MyFines";
 import MyCourses from "./pages/student/MyCourses";
 import Profile from "./pages/student/Profile";
+import StudentGrades from './pages/student/StudentGrades';
+import SubmitTask from './pages/student/SubmitTask';
 
 /* ===== TRAINER ===== */
 import TrainerLayout from "./layouts/TrainerLayout";
@@ -40,6 +42,7 @@ import EditTrainerProfile from "./pages/trainer/EditTrainerProfile";
 import Setting from "./pages/trainer/Settings";
 import AssessmentManager from "./pages/trainer/AssessmentManager";
 import Submissions from "./pages/trainer/Submissions";
+import MarkingInterface from "./pages/trainer/MarkingInterface";
 
 
 function App() {
@@ -79,6 +82,8 @@ function App() {
           <Route path="fines" element={<MyFines />} />
           <Route path="my-courses" element={<MyCourses />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="/student/grades" element={<StudentGrades />} />
+          <Route path="/student/submit-task" element={<SubmitTask />} />
         </Route>
 
         {/* ===== TRAINER ===== */}
@@ -92,6 +97,7 @@ function App() {
            <Route path="assessments" element={<AssessmentManager />} />
            <Route path="submissions" element={<Submissions />} />
            <Route path="settings" element={<Setting />} />
+           <Route path="/trainer/grade/:id" element={<MarkingInterface />} />
         </Route>
       </Routes>
     </BrowserRouter>

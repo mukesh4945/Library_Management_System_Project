@@ -1,72 +1,61 @@
-/* ReturnBook.css */
-.return-container-pro {
+.return-container {
   padding: 40px;
-  background: #020617;
+  background: #020617; /* Same as Dashboard */
   min-height: 100vh;
-  color: #fff;
+  color: white;
 }
 
-.return-header-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
+.return-header h2 { font-size: 2.2rem; margin-bottom: 5px; }
+.return-header p { color: #64748b; margin-bottom: 40px; }
+
+.return-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
-.text-content h1 { font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; }
-.text-content p { color: #64748b; font-size: 1rem; }
-
-.search-pill input {
-  background: #0f172a; border: 1px solid #1e293b; color: #fff;
-  padding: 12px 25px; border-radius: 30px; width: 300px;
-}
-
-/* Table Style */
-.return-glass-card {
-  background: #0f172a;
-  border-radius: 24px;
+.glass-morph {
+  background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  overflow: hidden;
+  border-radius: 24px;
+  padding: 30px;
 }
 
-.pro-table { width: 100%; border-collapse: collapse; text-align: left; }
-.pro-table th { 
-  background: #1e293b; padding: 18px 25px; font-size: 0.75rem; 
-  color: #94a3b8; text-transform: uppercase; letter-spacing: 1px;
-}
-.pro-table td { padding: 20px 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
-
-/* Member Cell */
-.member-cell { display: flex; align-items: center; gap: 15px; }
-.avatar-small {
-  width: 35px; height: 35px; background: #8b5cf6; color: white;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 0.8rem;
-}
-.details { display: flex; flex-direction: column; }
-.name { font-weight: 700; color: #f8fafc; }
-.uid { font-size: 0.75rem; color: #64748b; }
-
-/* Date & Fine */
-.date-group { display: flex; flex-direction: column; font-family: 'Courier New', monospace; font-size: 0.85rem; }
-.i-date { color: #64748b; }
-.d-date { color: #f59e0b; font-weight: 700; }
-
-.pro-date-picker {
-  background: #020617; border: 1px solid #334155; color: #fff;
-  padding: 8px; border-radius: 8px; cursor: pointer;
+.search-section-pro label { color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+.search-bar-pro { display: flex; gap: 10px; }
+.search-bar-pro input {
+  flex: 1; background: #020617; border: 1px solid #1e293b;
+  padding: 12px; border-radius: 10px; color: white;
 }
 
-.fine-tag-alert {
-  background: rgba(239, 68, 68, 0.1); color: #ef4444;
-  padding: 6px 12px; border-radius: 8px; font-weight: 800; display: inline-block;
+.book-details-preview { margin-top: 30px; padding-top: 20px; border-top: 1px solid #1e293b; }
+.preview-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: #cbd5e1; }
+.text-warning { color: #f59e0b; }
+
+.fine-display-box {
+  background: #020617;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 20px 0;
+  border: 1px solid #ef444433;
 }
-.no-fine { color: #10b981; font-weight: 600; font-size: 0.9rem; }
 
-/* Status Badges */
-.status-badge { padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
-.status-badge.issued { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
-.status-badge.returned { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.fine-display-box h2 { font-size: 3rem; color: #ef4444; margin: 10px 0; }
 
-.row-finalized { opacity: 0.6; background: rgba(0, 0, 0, 0.1); transition: 0.3s; }
-.row-finalized:hover { opacity: 1; }
+.complete-return-btn {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.complete-return-btn:hover { background: #059669; }

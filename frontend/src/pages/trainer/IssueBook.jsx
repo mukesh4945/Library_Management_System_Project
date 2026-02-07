@@ -1,84 +1,85 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import { UserPlus, BookOpen, Calendar, CheckCircle2, QrCode } from 'lucide-react';
 import "./IssueBook.css";
 
 const IssueBook = () => {
-  const [formData, setFormData] = useState({ studentId: "", bookId: "" });
+  const [formData, setFormData] = useState({
+    studentId: '',
+    bookId: '',
+    returnDate: ''
+  });
+
+  const handleIssue = (e) => {
+    e.preventDefault();
+    alert(`Book ${formData.bookId} issued to ${formData.studentId}`);
+  };
 
   return (
-    <div className="issue-page-wrapper">
-      <div className="issue-glass-container">
-        {/* Left Side: Form */}
-        <div className="issue-form-section">
-          <div className="form-header">
-            <span className="badge-new">Smart Dispatch</span>
-            <h2>Dispatch Library Asset</h2>
-            <p>Authorized personnel only. Ensure student ID is valid.</p>
-          </div>
+    <div className="issue-container-main">
+      <div className="issue-top-text">
+        <h2>Dispatch Library Asset</h2>
+        <p>Register a new book issuance to a student's profile.</p>
+      </div>
 
-          <form className="issue-modern-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="animated-input-group">
+      <div className="issue-wrapper-grid">
+        {/* Left Form */}
+        <div className="form-card-glass">
+          <form onSubmit={handleIssue}>
+            <div className="custom-input-box">
+              <label><UserPlus size={18} /> Student ID</label>
               <input 
                 type="text" 
-                required 
+                placeholder="e.g. STU102"
                 value={formData.studentId}
                 onChange={(e) => setFormData({...formData, studentId: e.target.value})}
               />
-              <label>Student Identity Number (SID)</label>
-              <span className="input-focus-line"></span>
             </div>
 
-            <div className="animated-input-group">
+            <div className="custom-input-box">
+              <label><BookOpen size={18} /> Book ID / ISBN</label>
               <input 
                 type="text" 
-                required 
+                placeholder="Scan or Enter ID"
                 value={formData.bookId}
                 onChange={(e) => setFormData({...formData, bookId: e.target.value})}
               />
-              <label>Universal Book ID / ISBN</label>
-              <span className="input-focus-line"></span>
             </div>
 
-            <div className="issue-meta-info">
-              <div className="meta-item">
-                <span>Issue Date:</span>
-                <strong>{new Date().toLocaleDateString()}</strong>
-              </div>
-              <div className="meta-item">
-                <span>Due Period:</span>
-                <strong>14 Days Standard</strong>
-              </div>
+            <div className="custom-input-box">
+              <label><Calendar size={18} /> Return Date</label>
+              <input 
+                type="date" 
+                value={formData.returnDate}
+                onChange={(e) => setFormData({...formData, returnDate: e.target.value})}
+              />
             </div>
 
-            <button className="confirm-issue-btn">
-              Confirm Transaction 🚀
+            <button type="submit" className="issue-confirm-btn">
+              Confirm & Issue Book
             </button>
           </form>
         </div>
 
-        {/* Right Side: Live Preview (The "Cool" Factor) */}
-        <div className="issue-preview-section">
-          <div className="preview-card">
-            <h3>Transaction Preview</h3>
-            <div className="preview-status">
-              {formData.studentId && formData.bookId ? (
-                <div className="preview-content">
-                  <div className="preview-row">
-                    <span>Issuing To:</span>
-                    <p>Rahul Sharma (ST-204)</p>
-                  </div>
-                  <div className="preview-row">
-                    <span>Book Title:</span>
-                    <p>Eloquent JavaScript 4th Ed.</p>
-                  </div>
-                  <div className="status-indicator-green">Ready to Link</div>
-                </div>
-              ) : (
-                <div className="preview-placeholder">
-                  <div className="scan-anim"></div>
-                  <p>Awaiting identification...</p>
-                </div>
-              )}
-            </div>
+        {/* Right Info Panel */}
+        <div className="info-card-glass">
+          <h3>Quick Guidelines</h3>
+          <div className="guide-item">
+            <CheckCircle2 size={20} className="text-success" />
+            <span>Verify Student ID against Identity Card.</span>
+          </div>
+          <div className="guide-item">
+            <CheckCircle2 size={20} className="text-success" />
+            <span>Ensure the Book is not already reserved.</span>
+          </div>
+          <div className="guide-item">
+            <CheckCircle2 size={20} className="text-success" />
+            <span>Default return period is 14 days.</span>
+          </div>
+
+          <div className="barcode-visual">
+             <QrCode size={40} className="qr-icon" />
+             <div className="scan-line"></div>
+             <p>Ready to scan barcode...</p>
           </div>
         </div>
       </div>

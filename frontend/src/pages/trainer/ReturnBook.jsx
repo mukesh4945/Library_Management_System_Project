@@ -1,133 +1,70 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import { Search, RotateCcw, AlertTriangle, CheckCircle, Calculator } from 'lucide-react';
 import "./ReturnBook.css";
 
 const ReturnBook = () => {
-  const [returns, setReturns] = useState([
-    {
-      id: 1,
-      studentId: "ST-101",
-      studentName: "Rahul Sharma",
-      bookName: "Clean Code",
-      issueDate: "2026-01-01",
-      dueDate: "2026-01-10",
-      returnDate: "",
-      fine: 0,
-      status: "Issued"
-    },
-    {
-      id: 2,
-      studentId: "ST-205",
-      studentName: "Sneha Kapoor",
-      bookName: "Advanced React",
-      issueDate: "2026-02-01",
-      dueDate: "2026-02-07",
-      returnDate: "",
-      fine: 0,
-      status: "Issued"
-    }
-  ]);
+  const [searchId, setSearchId] = useState("");
+  const [fine, setFine] = useState(0);
+  const [isDamaged, setIsDamaged] = useState(false);
 
-  const handleReturn = (id, returnDate) => {
-    if(!returnDate) return;
-    
-    const updated = returns.map((item) => {
-      if (item.id === id) {
-        const due = new Date(item.dueDate);
-        const returned = new Date(returnDate);
-
-        let fine = 0;
-        if (returned > due) {
-          const diff = (returned - due) / (1000 * 60 * 60 * 24);
-          fine = Math.ceil(diff) * 10;
-        }
-
-        return { ...item, returnDate, fine, status: "Returned" };
-      }
-      return item;
-    });
-
-    setReturns(updated);
+  // Fake logic for fine calculation
+  const handleCalculateFine = () => {
+    // Agar book 5 din late hai aur per day 10rs fine hai
+    let totalFine = 50 + (isDamaged ? 100 : 0); 
+    setFine(totalFine);
   };
 
   return (
-    <div className="return-container-pro">
-      {/* Header with Quick Search Placeholder */}
-      <div className="return-header-section">
-        <div className="text-content">
-          <h1>📕 Asset Recovery</h1>
-          <p>Process returns, calculate overdue penalties, and update inventory.</p>
-        </div>
-        <div className="search-pill">
-          <input type="text" placeholder="Scan Student ID or Book ID..." />
-        </div>
+    <div className="return-container">
+      <div className="return-header">
+        <h2>Return Asset Management</h2>
+        <p>Process book returns and calculate penalties for overdue or damaged items.</p>
       </div>
 
-      {/* Modern Table Card */}
-      <div className="return-glass-card">
-        <div className="table-responsive">
-          <table className="pro-table">
-            <thead>
-              <tr>
-                <th>Member Details</th>
-                <th>Asset Identity</th>
-                <th>Dates (Issue/Due)</th>
-                <th>Return Date Selection</th>
-                <th>Calculated Fine</th>
-                <th>Current Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {returns.map((item) => (
-                <tr key={item.id} className={item.status === "Returned" ? "row-finalized" : ""}>
-                  <td>
-                    <div className="member-cell">
-                      <div className="avatar-small">{item.studentName.charAt(0)}</div>
-                      <div className="details">
-                        <span className="name">{item.studentName}</span>
-                        <span className="uid">{item.studentId}</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="book-cell">
-                      <span className="b-name">{item.bookName}</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="date-group">
-                      <span className="i-date">IS: {item.issueDate}</span>
-                      <span className="d-date">DU: {item.dueDate}</span>
-                    </div>
-                  </td>
-                  <td>
-                    {item.status === "Issued" ? (
-                      <div className="date-input-wrapper">
-                        <input
-                          type="date"
-                          className="pro-date-picker"
-                          onChange={(e) => handleReturn(item.id, e.target.value)}
-                        />
-                      </div>
-                    ) : (
-                      <span className="final-date">✅ {item.returnDate}</span>
-                    )}
-                  </td>
-                  <td>
-                    {item.fine > 0 ? (
-                      <div className="fine-tag-alert">₹{item.fine}</div>
-                    ) : (
-                      <span className="no-fine">Clean</span>
-                    )}
-                  </td>
-                  <td>
-                    <span className={`status-badge ${item.status.toLowerCase()}`}>
-                      {item.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div className="return-grid">
+        {/* Left Side: Search & Details */}
+        <div className="return-card glass-morph">
+          <div className="search-section-pro">
+            <label>Scan Book or Enter ID</label>
+            <div className="search-bar-pro">
+              <input 
+                type="text" 
+                placeholder="e.g. BK-9052" 
+                value={searchId}
+                onChange={(e) => setSearchId(e.target.value)}
+              />
+              <button className="search-btn-mini"><Search size={18} /></button>
+            </div>
+          </div>
+
+          <div className="book-details-preview">
+             <div className="preview-row"><span>Student:</span> <strong>Rahul Singh</strong></div>
+             <div className="preview-row"><span>Book Title:</span> <strong>Mastering React</strong></div>
+             <div className="preview-row"><span>Due Date:</span> <strong className="text-warning">01 Feb 2026</strong></div>
+          </div>
+        </div>
+
+        {/* Right Side: Fine & Action */}
+        <div className="return-card glass-morph">
+          <h3><Calculator size={20} /> Assessment & Fine</h3>
+          
+          <div className="damage-check">
+            <label className="checkbox-container">
+              <input type="checkbox" checked={isDamaged} onChange={() => setIsDamaged(!isDamaged)} />
+              <span className="checkmark"></span>
+              Book is Damaged? (+₹100)
+            </label>
+          </div>
+
+          <div className="fine-display-box">
+             <span>Calculated Fine:</span>
+             <h2>₹{fine}</h2>
+             <button onClick={handleCalculateFine} className="recalc-btn">Calculate Now</button>
+          </div>
+
+          <button className="complete-return-btn">
+            <RotateCcw size={18} /> Confirm Return
+          </button>
         </div>
       </div>
     </div>

@@ -1,0 +1,402 @@
+/* MarkingInterface.css */
+
+/* Reuse Root Variables for Consistency */
+:root {
+  --bg-primary: #020617;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #cbd5e1;
+  --border-light: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --accent-indigo: #6366f1;
+  --accent-green: #10b981;
+  --accent-orange: #f59e0b;
+  --accent-pink: #ec4899;
+  --accent-blue: #3b82f6;
+  --accent-gold: #ffd700;
+  --accent-red: #ef4444;
+  --shadow-glass: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --transition-fast: all 0.2s ease;
+  --transition-smooth: all 0.4s ease;
+  --animation-duration: 0.6s;
+}
+
+/* Container Styles */
+.marking-container {
+  padding: 40px;
+  background: var(--bg-primary) !important;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-primary) !important;
+}
+
+/* Background Blobs for Depth */
+.marking-container::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+  background: var(--accent-blue);
+  top: -15%;
+  left: -10%;
+  animation: blob-float 25s ease-in-out infinite;
+}
+
+.marking-container::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  background: var(--accent-indigo);
+  bottom: -10%;
+  right: -5%;
+  animation: blob-float 20s ease-in-out infinite 3s;
+}
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, -60px) scale(1.15); }
+  50% { transform: translate(-60px, 60px) scale(0.85); }
+  75% { transform: translate(60px, 60px) scale(1.1); }
+}
+
+/* Header with Flex and Animation */
+.marking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: var(--shadow-glass);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+  animation: fade-in var(--animation-duration) ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.back-btn-pro, .publish-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.back-btn-pro {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.back-btn-pro:hover {
+  background: var(--border-light);
+  transform: translateX(-5px);
+}
+
+.publish-btn {
+  background: linear-gradient(135deg, var(--accent-green), #059669);
+  border: none;
+  color: var(--text-primary);
+}
+
+.publish-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.grading-title {
+  text-align: center;
+}
+
+.grading-title h2 {
+  font-size: 1.8rem;
+  margin: 0 0 4px 0;
+}
+
+.grading-title p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Grid Layout for Marking */
+.marking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .marking-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Glass Card Base */
+.glass-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  box-shadow: var(--shadow-glass);
+  padding: 24px;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  animation: slide-up var(--animation-duration) ease-out 0.2s;
+  animation-fill-mode: both;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Work Preview Box */
+.work-preview-box .box-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 16px;
+}
+
+.code-display {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: var(--transition-fast);
+}
+
+.code-display:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.code-display pre {
+  margin: 0;
+}
+
+.code-display code {
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Grading Panel */
+.grading-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation-delay: 0.3s;
+}
+
+.score-input-section, .feedback-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  background: var(--border-light);
+  padding: 12px;
+  border-radius: 12px;
+  transition: var(--transition-fast);
+}
+
+.input-row:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.input-row input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  outline: none;
+  flex: 1;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.input-row span {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin-left: 8px;
+}
+
+.feedback-section textarea {
+  background: var(--border-light);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--text-primary);
+  outline: none;
+  resize: vertical;
+  min-height: 150px;
+  transition: var(--transition-fast);
+  font-size: 0.95rem;
+}
+
+.feedback-section textarea:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px var(--accent-indigo);
+}
+
+/* Quick Stats */
+.quick-stats-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 12px;
+  color: var(--accent-gold);
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.quick-stats-mini:hover {
+  transform: scale(1.02);
+}
+
+.q-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Alert Notice */
+.alert-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 12px;
+  color: var(--accent-red);
+  font-size: 0.9rem;
+  animation: pulse-alert 2s infinite;
+}
+
+@keyframes pulse-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.alert-notice svg {
+  stroke: var(--accent-red);
+}
+
+.alert-notice p {
+  margin: 0;
+}
+
+/* Keyframes Reuse */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* --- Success Overlay Styles --- */
+
+.success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.95); /* Deep dark blur */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fade-in 0.4s ease;
+}
+
+.success-card {
+  text-align: center;
+  padding: 60px !important;
+  max-width: 450px;
+  border: 1px solid var(--accent-green);
+  box-shadow: 0 0 50px rgba(16, 185, 129, 0.2);
+}
+
+.success-icon-wrap {
+  margin-bottom: 20px;
+  animation: scale-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-card h2 {
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.success-card p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.success-card p strong {
+  color: var(--accent-green);
+}
+
+.back-link-btn {
+  background: var(--accent-indigo);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.back-link-btn:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+@keyframes scale-up {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

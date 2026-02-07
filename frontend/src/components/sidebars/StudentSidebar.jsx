@@ -33,6 +33,8 @@ const StudentSidebar = () => {
         <NavLink to="search">🔍 Search Books</NavLink>
         <NavLink to="issued">📚 My Issued Books</NavLink>
         <NavLink to="reservations">📅 My Reservations</NavLink>
+        <NavLink to="submit-task">📤 Submit Assignment</NavLink>
+        <NavLink to="grades">📝 My Grades & Feedback</NavLink>
         <NavLink to="fines">💰 My Fines</NavLink>
         
         {/* Logout Link for better UX */}

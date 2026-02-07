@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // 👈 Ye import karein
 import { 
   Clock, 
   CheckCircle, 
@@ -12,6 +13,7 @@ import {
 import "./AssessmentManager.css";
 
 const AssessmentManager = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
   const submissions = [
@@ -123,7 +125,7 @@ const AssessmentManager = () => {
                   </td>
                   <td>
                     <div className="actions">
-                      <button className="grade-btn">Grade</button>
+                      <button className="grade-btn"onClick={() => navigate(`/trainer/grade/${sub.id}`)}>Grade</button>
                       <button className="more-btn"><MoreVertical size={16}/></button>
                     </div>
                   </td>

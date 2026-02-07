@@ -100,3 +100,42 @@
 @media (max-width: 1024px) {
   .dashboard-grid-dual { grid-template-columns: 1fr; }
 }
+/* Existing styles ke niche ye update add karein */
+
+.dashboard-grid-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* Graph bada, form chota */
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.chart-panel {
+  padding: 25px;
+}
+
+.full-width-panel {
+  margin-top: 30px;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+/* Scrollbar customization for feed */
+.feed-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.feed-grid::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+/* Responsiveness */
+@media (max-width: 1100px) {
+  .dashboard-grid-main {
+    grid-template-columns: 1fr;
+  }
+}
