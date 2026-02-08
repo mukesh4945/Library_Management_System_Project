@@ -11,6 +11,8 @@ import EnrollCourse from "./pages/EnrollCourse";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Logout from "./pages/Logout";
+import CommunicationHub from "./pages/Common/CommunicationHub";
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 /* ===== ADMIN ===== */
@@ -22,6 +24,8 @@ import Settings from "./pages/admin/Settings";
 import InvoiceGenerator from './pages/admin/InvoiceGenerator';
 import FeeManagement from './pages/admin/FeeManagement';
 import RefundManagement from './pages/admin/RefundManagement';
+
+
 
 /* ===== STUDENT ===== */
 import StudentLayout from "./layouts/StudentLayout";
@@ -47,6 +51,7 @@ import AssessmentManager from "./pages/trainer/AssessmentManager";
 import Submissions from "./pages/trainer/Submissions";
 import MarkingInterface from "./pages/trainer/MarkingInterface";
 import AddResource from './pages/trainer/AddResource';
+import AttendanceTracker from "./pages/trainer/AttendanceTracker";
 
 
 function App() {
@@ -66,6 +71,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/communication" element={<CommunicationHub />} />
 
 
         {/* ===== ADMIN ===== */}
@@ -78,6 +84,8 @@ function App() {
         <Route path="/admin/invoices" element={<InvoiceGenerator />} />
         <Route path="/admin/fee-management" element={<FeeManagement />} />
         <Route path="/admin/refunds" element={<RefundManagement />} />
+        <Route path="/admin/reports"element={<ProtectedRoute role="admin"> <Reports /></ProtectedRoute>} ></Route>
+        
 
         {/* ===== STUDENT ===== */}
         <Route path="/student" element={<StudentLayout />}>
@@ -106,6 +114,7 @@ function App() {
            <Route path="settings" element={<Setting />} />
            <Route path="grade/:id" element={<MarkingInterface />} />
            <Route path="add-resource" element={<AddResource />} />
+           <Route path="/trainer/attendance" element={<AttendanceTracker />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -53,6 +53,8 @@ const AdminSidebar = () => {
           <span className="nav-text">Reports</span>
           <span className="count-badge">New</span>
         </NavLink>
+
+        
         
         {/* --- Finance Section (Week 5) --- */}
 <small className="nav-label">FINANCIALS</small>
@@ -70,6 +72,11 @@ const AdminSidebar = () => {
           <NavLink to="/admin/refunds" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
   <span className="nav-icon">🔄</span>
   <span className="nav-text">Refunds</span>
+</NavLink>
+
+   <NavLink to="/communication" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+  <span className="nav-icon">📢</span> {/* Mike ya Bell icon */}
+  <span className="nav-text">Message Hub</span>
 </NavLink>
         <NavLink to="/admin/settings" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
           <span className="nav-icon">⚙️</span>

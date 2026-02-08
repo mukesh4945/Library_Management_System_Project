@@ -1,18 +1,91 @@
-import React from 'react';
-import { TrendingUp, Users, BookOpen, CreditCard, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { 
+  TrendingUp, Users, BookOpen, CreditCard, Download, 
+  Calendar, FileText, FileSpreadsheet, Filter 
+} from 'lucide-react';
 import "./Reports.css";
 
 const Reports = () => {
+  const [activeReport, setActiveReport] = useState("Finance");
+  const [exportFormat, setExportFormat] = useState("PDF");
+
+  const categories = [
+    { id: "Enrollment", icon: <Users size={18}/> },
+    { id: "Finance", icon: <CreditCard size={18}/> },
+    { id: "Attendance", icon: <Calendar size={18}/> },
+    { id: "Library", icon: <BookOpen size={18}/> }
+  ];
+const Reports = () => {
+  // 1. Aapka Dummy Data (Jise export karna hai)
+  const reportData = [
+    { Month: "Jan", Revenue: 40000, Students: 120 },
+    { Month: "Feb", Revenue: 55000, Students: 150 },
+    { Month: "Mar", Revenue: 85000, Students: 200 },
+  ];
+
+  // 2. Export Function
+  const handleDownload = () => {
+    const headers = Object.keys(reportData[0]).join(",");
+    const rows = reportData.map(row => Object.values(row).join(",")).join("\n");
+    const csvContent = `data:text/csv;charset=utf-8,${headers}\n${rows}`;
+    
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Coaching_Report_2026.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div className="reports-wrapper">
+      <div className="reports-header">
+        <h1>Analytics & Reports</h1>
+        {/* 3. Button se connect karein */}
+        <button className="download-report-btn" onClick={handleDownload}>
+          <Download size={18} /> Download CSV
+        </button>
+      </div>
+      {/* Baaki code... */}
+    </div>
+  );
+};
   return (
     <div className="reports-wrapper">
       <div className="reports-header">
         <div>
           <h1>Analytics & Reports</h1>
-          <p>Detailed insight into your system's performance and revenue.</p>
+          <p>Detailed insight into system's performance, revenue, and automation.</p>
         </div>
-        <button className="download-report-btn">
-          <Download size={18} /> Download Full PDF
-        </button>
+        
+        <div className="export-controls">
+          <select 
+            className="format-select" 
+            value={exportFormat} 
+            onChange={(e) => setExportFormat(e.target.value)}
+          >
+            <option value="PDF">PDF Document</option>
+            <option value="XLSX">Excel Spreadsheet</option>
+            <option value="CSV">CSV File</option>
+          </select>
+          <button className="download-report-btn">
+            <Download size={18} /> Export {exportFormat}
+          </button>
+        </div>
+      </div>
+
+      {/* --- Filter Tabs (Week 7 Requirement) --- */}
+      <div className="report-tabs">
+        {categories.map(cat => (
+          <button 
+            key={cat.id} 
+            className={`report-tab ${activeReport === cat.id ? 'active' : ''}`}
+            onClick={() => setActiveReport(cat.id)}
+          >
+            {cat.icon} {cat.id}
+          </button>
+        ))}
       </div>
 
       {/* --- Top Stats --- */}
@@ -36,9 +109,12 @@ const Reports = () => {
       </div>
 
       <div className="charts-container">
-        {/* --- Revenue Chart (Visual Simulation) --- */}
+        {/* --- Dynamic Chart Box --- */}
         <div className="chart-box glass-effect">
-          <h3>Monthly Revenue Trend</h3>
+          <div className="chart-header">
+            <h3>{activeReport} Trend Analysis</h3>
+            <span className="live-indicator">Live Data</span>
+          </div>
           <div className="bar-chart-sim">
             <div className="bar" style={{height: '40%'}} data-label="Jan"></div>
             <div className="bar" style={{height: '60%'}} data-label="Feb"></div>
@@ -48,20 +124,30 @@ const Reports = () => {
           </div>
         </div>
 
-        {/* --- Library Usage --- */}
+        {/* --- Automation & Automation Status --- */}
         <div className="chart-box glass-effect">
-          <h3>Library Resource Distribution</h3>
-          <div className="progress-circle-wrap">
-            <div className="stat-row">
-              <span>Physical Books</span>
-              <div className="prog-bar"><div className="fill p-books" style={{width: '65%'}}></div></div>
-              <span>65%</span>
+          <h3>Scheduled Automations</h3>
+          <div className="automation-list">
+            <div className="auto-item">
+              <div className="auto-icon"><FileText size={16}/></div>
+              <div className="auto-text">
+                <p>Monthly Finance PDF</p>
+                <small>Next: 1st March</small>
+              </div>
+              <span className="status-tag">Auto</span>
             </div>
-            <div className="stat-row">
-              <span>E-Books / PDFs</span>
-              <div className="prog-bar"><div className="fill p-pdfs" style={{width: '35%'}}></div></div>
-              <span>35%</span>
+            <div className="auto-item">
+              <div className="auto-icon"><FileSpreadsheet size={16}/></div>
+              <div className="auto-text">
+                <p>Weekly Attendance Excel</p>
+                <small>Next: Monday</small>
+              </div>
+              <span className="status-tag">Auto</span>
             </div>
+          </div>
+          
+          <div className="workbook-section">
+             <button className="outline-btn">Placement Logbook (PDF)</button>
           </div>
         </div>
       </div>

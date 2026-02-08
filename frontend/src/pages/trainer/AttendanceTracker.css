@@ -1,0 +1,133 @@
+.attendance-wrapper {
+  padding: 30px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.att-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.att-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.header-meta {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.date-badge {
+  background: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.save-btn {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  background: #334155;
+  transform: translateY(-2px);
+}
+
+/* Attendance Table Card */
+.attendance-card {
+  padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.att-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-top: 20px;
+}
+
+.att-table th {
+  text-align: left;
+  padding: 15px;
+  color: #64748b;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.att-table td {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+
+.att-table tr td:first-child { border-radius: 15px 0 0 15px; }
+.att-table tr td:last-child { border-radius: 0 15px 15px 0; }
+
+/* Status Button Styles */
+.status-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.present-btn, .absent-btn {
+  border: 2px solid #e2e8f0;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s;
+}
+
+.present-btn.active {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #15803d;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+}
+
+.absent-btn.active {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #b91c1c;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+/* Live Indicators */
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #cbd5e1;
+}
+
+.indicator.present { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.indicator.absent { background: #ef4444; box-shadow: 0 0 8px #ef4444; }

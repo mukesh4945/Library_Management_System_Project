@@ -76,8 +76,16 @@ const TrainerSidebar = () => {
           <span className="nav-text">Settings</span>
         </NavLink>
       </nav>
+        <NavLink to="/trainer/attendance" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+  <span className="nav-icon">📅</span>
+  <span className="nav-text">Attendance</span>
+</NavLink>
+
+ <NavLink to="add-resource" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+  <span className="nav-icon">➕</span>
+  <span className="nav-text">Add New Item</span>
+</NavLink>
       
-      <NavLink to="add-resource">➕ Add New Item</NavLink>
 
       {/* --- Bottom Section --- */}
       <div className="sidebar-footer">
