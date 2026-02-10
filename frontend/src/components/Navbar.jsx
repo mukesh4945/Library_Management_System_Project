@@ -1,14 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const role = localStorage.getItem("userRole"); // null | student | trainer | admin
+
+  const handleLogout = () => {
+    localStorage.removeItem("userRole");
+    navigate("/login");
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">LMS</Link>
-      </div>
+  <Link to="/">
+    <img src="/image/LMS.png" alt="LMS Logo" className="navbar-logo-img" />
+    <span className="logo-text-overlay">Library management system</span>
+  </Link>
+</div>
+
 
       <ul className="navbar-links">
         <li><Link to="/">HOME</Link></li>
@@ -16,24 +26,19 @@ const Navbar = () => {
         <li><Link to="/contact">CONTACT US</Link></li>
         <li><Link to="/about">ABOUT ME</Link></li>
 
+        {/* 👇 IF NOT LOGGED IN */}
         {!role && (
           <>
             <li><Link to="/login">LOGIN</Link></li>
             <li><Link to="/register">REGISTER</Link></li>
-            <li><Link to="/logout">LOGOUT</Link></li>
           </>
         )}
 
+        {/* 👇 IF LOGGED IN */}
         {role && (
           <li>
-            <button
-              className="logout-btn"
-              onClick={() => {
-                localStorage.removeItem("userRole");
-                window.location.href = "/login";
-              }}
-            >
-              Logout
+            <button className="logout-btn" onClick={handleLogout}>
+              LOGOUT
             </button>
           </li>
         )}

@@ -129,3 +129,47 @@
     justify-content: center;
   }
 }
+  .navbar-logo-img {
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -70px;
+
+  animation: floatLogo 3s ease-in-out infinite;
+  transition: transform 0.4s ease;
+}
+
+.navbar-logo-img:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+  .logo-text-overlay {
+  position: absolute;
+  top: 45%;
+  left: 15.4%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  font-weight: 800;
+  pointer-events: none;
+
+  background: linear-gradient(
+    270deg,
+    #6366f1,
+    #e6ebe7,
+    #6366f1,
+    #e6ebe7,
+    #ef4444
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    background-clip: text;
+  animation: logoGradient 6s ease infinite;
+}
+
+@keyframes logoGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

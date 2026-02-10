@@ -8,18 +8,38 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!loginId || !password) {
-      alert("Please enter Email/Phone and Password");
-      return;
-    }
+  if (!loginId || !password) {
+    alert("Please enter Email/Phone and Password");
+    return;
+  }
 
-    // 🔐 TEMP ROLE (frontend demo)
-    const role = "student";
+  // 🔹 saare registered users uthao
+  const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (role === "student") navigate("/student/dashboard");
-    else if (role === "admin") navigate("/admin/dashboard");
-    else if (role === "trainer") navigate("/trainer/dashboard");
-  };
+  // 🔹 matching user dhundo
+  const foundUser = users.find(
+    (u) =>
+      (u.email === loginId || u.phone === loginId) &&
+      u.password === password
+  );
+
+  if (!foundUser) {
+    alert("Invalid credentials");
+    return;
+  }
+
+  // 🔥 ab login successful hai
+  localStorage.setItem("user", JSON.stringify(foundUser));
+
+
+  const role = foundUser.role;
+
+  if (role === "STUDENT") navigate("/student/dashboard");
+  else if (role === "ADMIN") navigate("/admin/dashboard");
+  else if (role === "TRAINER") navigate("/trainer/dashboard");
+  else if (role === "SUPER_ADMIN") navigate("/superadmin");
+};
+
 
   return (
     <div className="login-wrapper">

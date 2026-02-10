@@ -30,7 +30,7 @@ function CourseCard(props) {
         <div className="course-footer">
           <span className="price">{props.price}</span>
 
-          <Link to={`/courses/${props.id}`} className="view-btn">
+          <Link to={`/courses/${props.id}`} className="view-btnn">
             View Course
           </Link>
         </div>

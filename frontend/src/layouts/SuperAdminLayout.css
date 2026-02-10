@@ -1,0 +1,16 @@
+.sa-layout {
+  display: flex;
+}
+
+.sa-content {
+  flex: 1;
+  margin-left: 260px;   /* 🔥 VERY IMPORTANT */
+  background: #020617;
+  min-height: 100vh;
+}
+@media (max-width: 768px) {
+  .sa-content {
+    margin-left: 80px;
+  }
+}
+

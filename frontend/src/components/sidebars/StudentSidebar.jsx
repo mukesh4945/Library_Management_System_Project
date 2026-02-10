@@ -1,33 +1,31 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./StudentSidebar.css";
 
 const StudentSidebar = () => {
-  const student = {
-    name: "Mukesh",
-    photo: "/image/profile.png" // Ensure this path is correct in public folder
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
   };
 
   return (
     <aside className="student-sidebar">
-      {/* ===== STUDENT PROFILE SECTION ===== */}
+      {/* PROFILE */}
       <div className="student-profile">
-        <div className="avatar-wrapper">
-           <img
-            src={student.photo}
-            alt="Student"
-            className="student-avatar"
-            onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=Mukesh&background=23d5ab&color=fff"; }}
-          />
-        </div>
-
-        <h3 className="student-name">{student.name}</h3>
+        <img
+          src="/image/profile.png"
+          alt="Student"
+          className="student-avatar"
+        />
+        <h3 className="student-name">Mukesh</h3>
 
         <NavLink to="profile" className="edit-profile">
           ⚙️ Edit Profile
         </NavLink>
       </div>
 
-      {/* ===== NAV LINKS ===== */}
+      {/* NAV */}
       <nav>
         <NavLink to="/student/dashboard">📊 Dashboard</NavLink>
         <NavLink to="search">🔍 Search Books</NavLink>
@@ -36,9 +34,11 @@ const StudentSidebar = () => {
         <NavLink to="submit-task">📤 Submit Assignment</NavLink>
         <NavLink to="grades">📝 My Grades & Feedback</NavLink>
         <NavLink to="fines">💰 My Fines</NavLink>
-        
-        {/* Logout Link for better UX */}
-        <NavLink to="/logout" className="logout-nav">🚪 Logout</NavLink>
+
+        {/* ✅ LOGOUT */}
+        <button onClick={handleLogout} className="logout-nav">
+          🚪 Logout
+        </button>
       </nav>
     </aside>
   );

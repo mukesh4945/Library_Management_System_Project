@@ -12,6 +12,7 @@
   position: sticky;
   top: 0;
   color: #fff;
+   overflow-y: auto; 
 }
 
 /* --- Profile Section --- */
@@ -64,6 +65,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex: 1;            /* ✅ ADD THIS */
 }
 
 .student-sidebar nav a {
@@ -104,4 +106,33 @@
 
 .logout-nav:hover {
   background: rgba(255, 77, 77, 0.1) !important;
+}
+.logout-nav {
+  margin-top: auto;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #ff4d4d;
+}
+
+.logout-nav:hover {
+  background: rgba(255, 77, 77, 0.1);
+}
+
+.student-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #23d5ab transparent;
+}
+
+.student-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.student-sidebar::-webkit-scrollbar-thumb {
+  background: #23d5ab;
+  border-radius: 10px;
 }

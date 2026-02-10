@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+
+import PublicLayout from "./layouts/PublicLayout";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import CourseDetails from "./pages/CourseDetails";
@@ -13,6 +14,14 @@ import Contact from "./pages/Contact";
 import Logout from "./pages/Logout";
 import CommunicationHub from "./pages/Common/CommunicationHub";
 import ProtectedRoute from './components/ProtectedRoute';
+
+import SuperAdminLayout from "./layouts/SuperAdminLayout";
+import SuperAdminDashboard from "./pages/superadmin/SuperAdminDashboard";
+import ManageAdmins from "./pages/superadmin/ManageAdmins";
+import SystemSettings from "./pages/superadmin/SystemSettings";
+import RoleManagement from "./pages/superadmin/RoleManagement";
+import RoleRoute from "./components/RoleRoute";
+import Report from "./pages/superadmin/Report";
 
 
 /* ===== ADMIN ===== */
@@ -55,28 +64,54 @@ import AttendanceTracker from "./pages/trainer/AttendanceTracker";
 
 
 function App() {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
   return (
     <BrowserRouter>
-      <Navbar />
+      
 
       <Routes>
+        <Route element={<PublicLayout />}>
         {/* ===== PUBLIC ===== */}
         <Route path="/" element={<Home />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/:id" element={<CourseDetails />} />
+         </Route>
+         
         <Route path="/htmlcourse" element={<HtmlCourse />} />
         <Route path="/enrollcourse" element={<EnrollCourse />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/communication" element={<CommunicationHub />} />
+          <Route path="/courses" element={<Courses />} />
+        <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/contact" element={<Contact />} />
+         <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
+        {/* ===== SUPER ADMIN ===== */}
+        <Route
+          path="/superadmin"
+          element={
+            <RoleRoute role="SUPER_ADMIN" user={user}>
+              <SuperAdminLayout />
+            </RoleRoute>
+          }
+        >
+          <Route index element={<SuperAdminDashboard />} />
+          <Route path="manage-admins" element={<ManageAdmins />} />
+          <Route path="settings" element={<SystemSettings />} />
+          <Route path="role-management" element={<RoleManagement />} />
+           <Route path="report" element={<Report />} />
+        </Route>
 
         {/* ===== ADMIN ===== */}
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute role="ADMIN">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/admin/users" element={<ManageUsers />} />
         <Route path="/admin/books" element={<ManageBooks />} />
         <Route path="/admin/reports" element={<Reports />} />
@@ -84,11 +119,16 @@ function App() {
         <Route path="/admin/invoices" element={<InvoiceGenerator />} />
         <Route path="/admin/fee-management" element={<FeeManagement />} />
         <Route path="/admin/refunds" element={<RefundManagement />} />
-        <Route path="/admin/reports"element={<ProtectedRoute role="admin"> <Reports /></ProtectedRoute>} ></Route>
-        
 
         {/* ===== STUDENT ===== */}
-        <Route path="/student" element={<StudentLayout />}>
+        <Route
+          path="/student"
+          element={
+            <ProtectedRoute role="STUDENT">
+              <StudentLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="search" element={<SearchBooks />} />
@@ -102,23 +142,31 @@ function App() {
         </Route>
 
         {/* ===== TRAINER ===== */}
-        <Route path="/trainer" element={<TrainerLayout />}>
+        <Route
+          path="/trainer"
+          element={
+            <ProtectedRoute role="TRAINER">
+              <TrainerLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<TrainerDashboard />} />
           <Route path="issue" element={<IssueBook />} />
           <Route path="return" element={<ReturnBook />} />
           <Route path="reservations" element={<Reservations />} />
-           <Route path="edit-profile" element={<EditTrainerProfile />} />
-           <Route path="assessments" element={<AssessmentManager />} />
-           <Route path="submissions" element={<Submissions />} />
-           <Route path="settings" element={<Setting />} />
-           <Route path="grade/:id" element={<MarkingInterface />} />
-           <Route path="add-resource" element={<AddResource />} />
-           <Route path="/trainer/attendance" element={<AttendanceTracker />} />
+          <Route path="edit-profile" element={<EditTrainerProfile />} />
+          <Route path="assessments" element={<AssessmentManager />} />
+          <Route path="submissions" element={<Submissions />} />
+          <Route path="settings" element={<Setting />} />
+          <Route path="grade/:id" element={<MarkingInterface />} />
+          <Route path="add-resource" element={<AddResource />} />
+          <Route path="attendance" element={<AttendanceTracker />} />
         </Route>
+
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;
+

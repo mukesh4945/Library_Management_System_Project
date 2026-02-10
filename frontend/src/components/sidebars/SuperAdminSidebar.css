@@ -1,0 +1,122 @@
+:root {
+  --sb-bg: #0f172a; /* Deep dark blue */
+  --sb-active: #6366f1; /* Indigo */
+  --sb-hover: rgba(99, 102, 241, 0.1);
+  --sb-text: #94a3b8;
+}
+
+.sa-sidebar {
+  width: 260px;
+  height: 100vh;
+  background: var(--sb-bg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sa-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 3rem;
+  padding-left: 0.5rem;
+}
+
+.logo-box {
+  background: rgba(99, 102, 241, 0.15);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.sa-brand h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.sa-brand h3 span {
+  color: var(--sb-active);
+}
+
+.sa-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.sa-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--sb-text);
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sa-link:hover {
+  background: var(--sb-hover);
+  color: white;
+  transform: translateX(5px);
+}
+
+.sa-link.active {
+  background: var(--sb-active);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+}
+
+.sa-link svg {
+  transition: transform 0.3s ease;
+}
+
+.sa-link:hover svg {
+  transform: scale(1.1);
+}
+
+/* Footer Section */
+.sa-footer {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* For Responsive screens */
+@media (max-width: 768px) {
+  .sa-sidebar {
+    width: 80px;
+    padding: 1rem;
+  }
+  .sa-brand h3, .sa-link span, .logout-btn span {
+    display: none;
+  }
+  .sa-brand { margin-bottom: 2rem; justify-content: center; padding: 0; }
+  .sa-link { justify-content: center; }
+}

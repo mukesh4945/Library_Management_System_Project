@@ -89,7 +89,7 @@ const TrainerSidebar = () => {
 
       {/* --- Bottom Section --- */}
       <div className="sidebar-footer">
-        <NavLink to="/logout" className="logout-btn-premium">
+        <NavLink to="/" className="logout-btn-premium">
           <span className="nav-icon">🚪</span>
           <span className="nav-text">Logout</span>
         </NavLink>
