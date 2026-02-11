@@ -82,9 +82,7 @@ const RoleManagement = () => {
             ))}
           </select>
 
-          <button className="refresh-btn" title="Refresh list">
-            <RefreshCw size={18} />
-          </button>
+          
         </div>
       </div>
 

@@ -7,6 +7,7 @@ import Courses from "./pages/Courses";
 import CourseDetails from "./pages/CourseDetails";
 import HtmlCourse from "./pages/HtmlCourse";
 import Login from "./pages/auth/Login";
+
 import Register from "./pages/auth/Register";
 import EnrollCourse from "./pages/EnrollCourse";
 import About from "./pages/About";

@@ -29,9 +29,7 @@ const ManageAdmins = () => {
           <button className="add-admin-btn">
             <UserPlus size={18} /> Add New Admin
           </button>
-          <button className="refresh-btn" title="Refresh list">
-            <RefreshCw size={18} />
-          </button>
+         
         </div>
       </div>
 

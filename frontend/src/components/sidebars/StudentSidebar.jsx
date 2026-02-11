@@ -6,7 +6,7 @@ const StudentSidebar = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate("/logout");
   };
 
   return (

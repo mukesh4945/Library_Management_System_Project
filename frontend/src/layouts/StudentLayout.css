@@ -1,0 +1,12 @@
+.student-container {
+  display: flex;
+  min-height: 100vh;
+  background: #020617;
+}
+
+.student-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  color: white;
+}

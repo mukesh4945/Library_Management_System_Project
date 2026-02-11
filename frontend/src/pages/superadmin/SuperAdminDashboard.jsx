@@ -15,7 +15,7 @@ const SuperAdminDashboard = () => {
     { title: "Active Courses", value: "84", icon: <FileBarChart />, trend: "Live", isPositive: true, color: "#f59e0b" },
     { title: "Live Sessions", value: "312", icon: <Activity />, trend: "-5%", isPositive: false, color: "#ef4444" },
   ];
-
+  
   const alerts = [
     { type: "warning", message: "3 payment gateways showing 5%+ failure rate", time: "14 min ago" },
     { type: "error", message: "Database backup failed at 02:00 AM", time: "1 hr ago" },
@@ -53,13 +53,7 @@ const SuperAdminDashboard = () => {
           <div className="current-date">
             {new Date().toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}
           </div>
-          <button 
-            className={`refresh-btn ${refreshing ? 'rotating' : ''}`}
-            onClick={handleRefresh}
-            title="Refresh Dashboard"
-          >
-            <RefreshCw size={20} />
-          </button>
+         
         </div>
       </div>
 

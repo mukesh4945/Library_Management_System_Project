@@ -255,13 +255,14 @@ function Courses() {
 
       {/* Search */}
       <div className="courses-search">
-        <input
-          type="text"
-          placeholder="Search courses..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+  <span className="search-icon">🔍</span>
+  <input
+    type="text"
+    placeholder="Search courses..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+</div>
 
       {/* Courses */}
       <div className="courses-grid">

@@ -173,3 +173,10 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+.login-register li{
+  right: 0;
+  display: inline;
+  margin-left: 10vh;
+  padding-left: -10px;
+}
+

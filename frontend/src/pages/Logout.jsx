@@ -13,7 +13,7 @@ const Logout = () => {
 
     // ⏳ Smooth Transition Delay
     const timer = setTimeout(() => {
-      navigate("/login");
+      navigate("/");
     }, 1500);
 
     return () => clearTimeout(timer); // Cleanup timer

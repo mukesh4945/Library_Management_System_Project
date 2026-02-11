@@ -55,9 +55,7 @@ const Report = () => {
         </div>
 
         <div className="header-actions">
-          <button className="refresh-btn" title="Refresh data">
-            <RefreshCw size={18} />
-          </button>
+          
           <button className="export-all-btn">
             <Download size={18} /> Export All Reports
           </button>

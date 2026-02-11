@@ -28,10 +28,10 @@ const Navbar = () => {
 
         {/* 👇 IF NOT LOGGED IN */}
         {!role && (
-          <>
-            <li><Link to="/login">LOGIN</Link></li>
+          <div className="login-register">
             <li><Link to="/register">REGISTER</Link></li>
-          </>
+            <li><Link to="/login">LOGIN</Link></li>
+          </div>
         )}
 
         {/* 👇 IF LOGGED IN */}

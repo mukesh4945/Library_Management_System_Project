@@ -51,7 +51,7 @@ const SuperAdminSidebar = () => {
   className="logout-btn"
   onClick={() => {
     localStorage.clear();
-    window.location.href = "/";}}>
+    window.location.href = "/logout";}}>
       <span>Logout</span>
     </button>
 

@@ -53,7 +53,7 @@
 }
 
 .refresh-btn {
-  background: white;
+  background: rgb(255, 255, 255);
   border: none;
   width: 44px;
   height: 44px;
@@ -422,4 +422,22 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+/* 🚫 REMOVE BLUE FLOATING CIRCLE COMPLETELY */
+.sa-dashboard-header::before,
+.sa-dashboard-header::after,
+.header-right::before,
+.header-right::after,
+.current-date::before,
+.current-date::after {
+  content: none !important;
+  display: none !important;
+}
+.sa-dashboard-header > div > div {
+  background: none !important;
+}
+button::after,
+button::before {
+  display: none !important;
+  content: none !important;
 }

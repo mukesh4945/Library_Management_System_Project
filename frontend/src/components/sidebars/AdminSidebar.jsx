@@ -86,7 +86,7 @@ const AdminSidebar = () => {
 
       {/* --- Bottom Section --- */}
       <div className="sidebar-footer">
-        <NavLink to="/" className="logout-btn-premium">
+        <NavLink to="/logout" className="logout-btn-premium">
           <span className="nav-icon">🚪</span>
           <span className="nav-text">Logout</span>
         </NavLink>
